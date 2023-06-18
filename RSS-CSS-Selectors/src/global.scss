@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 html {
   font-size: 10px;
 }
@@ -25,7 +30,7 @@ body {
   "editor levels"
   "footer levels";
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: 50px 1fr 2fr 120px;
+  grid-template-rows: auto 1fr 2fr auto;
 }
 
 .header {
@@ -49,9 +54,12 @@ body {
 
 .footer {
   grid-area: footer;
-  background: midnightblue;
 }
 
 h1 {
+  font-size: 1.6rem;
+}
+
+h2 {
   font-size: 1.6rem;
 }

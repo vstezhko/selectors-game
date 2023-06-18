@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const postcss = require('postcss');
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
@@ -63,9 +62,9 @@ const baseConfig = {
             filename: '[name].[contenthash].css',
         }),
         new CleanWebpackPlugin(),
-        // new CopyPlugin({
-        //     patterns: [{ from: 'src/assets', to: 'assets' }],
-        // }),
+        new CopyPlugin({
+            patterns: [{ from: 'src/assets', to: 'assets' }],
+        }),
     ],
 };
 
