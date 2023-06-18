@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #2e2a23;
+  height: 100vh;
+}
+
+.wrapper {
+  display: grid;
+  height: 100%;
+  grid-template-areas: "header levels"
+  "table levels"
+  "editor levels"
+  "footer levels";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 50px 1fr 2fr 120px;
+}
+
+.header {
+  grid-area: header;
+  background: snow;
+}
+
+.table {
+  grid-area: table;
+  background: blue;
+}
+
+.editor {
+  grid-area: editor;
+  background: dodgerblue;
+}
+
+.levels {
+  grid-area: levels;
+  background: deeppink;
+}
+
+.footer {
+  grid-area: footer;
+  background: midnightblue;
+}

@@ -3,6 +3,8 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcss = require('postcss');
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
@@ -22,6 +24,27 @@ const baseConfig = {
                 exclude: /node_modules/,
                 use: 'ts-loader',
             },
+            {
+                test: /\.(c|sa|sc)ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [require('postcss-preset-env')],
+                            },
+                        },
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                ],
+            },
         ],
     },
     resolve: {
@@ -35,6 +58,9 @@ const baseConfig = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
         }),
         new CleanWebpackPlugin(),
         // new CopyPlugin({
