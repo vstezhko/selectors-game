@@ -33,6 +33,32 @@
     margin: 0;
     padding-left: 1.5rem;
   }
+
+  // checkmark
+
+  .checkmark {
+    position: relative;
+    display: inline-block;
+    margin-right: 1.4rem;
+    width: 0.8rem;
+    height: 13px;
+    opacity: 2;
+    border: solid 3px white;
+    border-width: 0 3px 3px 0;
+    opacity: .2;
+    top: -1px;
+    transform: rotate(40deg);
+  }
+
+  .completed {
+    .checkmark {
+      opacity: .55;
+      border: solid 3px #4cbb4a;
+      border-width: 0 3px 3px 0;
+    }
+  }
+
+
 }
 
 .levels__list {
@@ -73,31 +99,8 @@
   &:hover {
     background: rgba(255, 255, 255, .05);
   }
-
 }
 
 
-// checkmark
 
-.checkmark {
-  position: relative;
-  display: inline-block;
-  margin-right: 1.4rem;
-  width: 0.8rem;
-  height: 13px;
-  opacity: 2;
-  border: solid 3px white;
-  border-width: 0 3px 3px 0;
-  opacity: .2;
-  top: -1px;
-  transform: rotate(40deg);
-}
-
-.completed {
-  .checkmark {
-    opacity: .55;
-    border: solid 3px #4cbb4a;
-    border-width: 0 3px 3px 0;
-  }
-}
 

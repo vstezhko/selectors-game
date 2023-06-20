@@ -19,7 +19,7 @@ export class Levels {
         let generatedLevels = '';
         levelsData.forEach((level: LevelDataType) => {
             generatedLevels += `
-                <a class="levels__level" data-id="1"><span class="checkmark"></span><span class="level-number">1</span>${level.doThis}</a>
+                <a class="levels__level" data-id="1"><span class="checkmark"></span><span class="level-number">${level.levelNumber}</span>${level.syntax}</a>
             `;
         });
         const levelsLayout = `
