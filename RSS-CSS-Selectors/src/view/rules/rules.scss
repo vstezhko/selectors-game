@@ -1,0 +1,93 @@
+.rules {
+  background: #221e18;
+  padding: 2rem;
+  height: 100%;
+}
+
+.rules__header {
+  font-size: 2.5rem;
+  padding: 0 0 1rem 0;
+  color: #777;
+}
+
+.checkmark {
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+  width: 12px;
+  height: 20px;
+  opacity: 2;
+  border: solid 3px white;
+  border-width: 0 4px 4px 0;
+  opacity: .2;
+  top: -3px;
+  transform: rotate(40deg);
+}
+
+.completed .checkmark {
+  opacity: .7;
+  border: solid 3px #4cbb4a;
+  border-width: 0 4px 4px 0;
+}
+
+.rules__content {
+  font-size: 1.5rem;
+  margin: 3rem auto 0 auto;
+  color: rgba(255, 255, 255, .6);
+
+  strong {
+    color: #AAA;
+    background: rgba(255,255,255,.1);
+    padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+    margin: 0 0.2rem;
+    font-size: 1.3rem;
+    font-family: menlo,monospace;
+    font-weight: normal;
+  }
+
+  .selector-name {
+    font-size: 1.8rem;
+    margin: 0 0 0.4rem 0;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin: 0 0 1.5rem 0;
+    font-weight: 300;
+    opacity: .7;
+  }
+
+  .syntax {
+    font-size: 2.4rem;
+    font-weight: 200;
+    opacity: .8;
+    margin-bottom: 1.8rem;
+    background: rgba(255, 255, 255, .05);
+    display: inline-block;
+    padding: 0.5rem 0.8rem;
+    border-bottom: solid 0.2rem rgba(255, 255, 255, .1);
+  }
+
+  .hint {
+    color: #888;
+    font-size: 1.5rem;
+  }
+
+  .examples-title {
+    margin: 4.5rem 0 1rem 0;
+  }
+
+  .example {
+    border-bottom: solid 0.1rem rgba(255, 255, 255, .1);
+    padding: 1rem 0 1.2rem 0;
+    line-height: 170%;
+    color: #888;
+    font-size: 1.5rem;
+
+    strong {
+      margin-left: 0;
+    }
+  }
+}
+
+

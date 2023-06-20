@@ -1,7 +1,15 @@
 const levelsData = require('../../model/levelsData.json');
 
 type LevelDataType = {
+    levelNumber: string;
+    title: string;
+    selectorName: string;
     doThis: string;
+    selector: string;
+    syntax: string;
+    hint: string;
+    examples: string[];
+    boardMarkup: string;
 };
 
 export class Levels {
