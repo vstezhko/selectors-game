@@ -13,14 +13,16 @@ a {
 
 html {
   font-size: 10px;
+  scroll-behavior: smooth;
 }
 
 body {
   background: #2e2a23;
   height: 100vh;
   font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
-  color: rgba(255,255,255,.3);;
-}
+  color: rgba(255,255,255,.7);
+  font-size: 1.4rem;
+  }
 
 .wrapper {
   display: grid;
@@ -29,7 +31,7 @@ body {
   "table levels"
   "editor levels"
   "footer levels";
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 30rem;
   grid-template-rows: auto 1fr 2fr auto;
 }
 
@@ -49,7 +51,6 @@ body {
 
 .levels {
   grid-area: levels;
-  background: deeppink;
 }
 
 .footer {
@@ -61,5 +62,9 @@ h1 {
 }
 
 h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
   font-size: 1.6rem;
 }
