@@ -27,8 +27,8 @@ export class Levels {
             <h2>Levels</h2>
             <div class="levels__list">
                 ${generatedLevels}
-<!--                <a class="levels__level completed" data-id='1'><span class='checkmark'></span><span class='level-number'>1</span>Text</a>-->
-<!--                <a class="levels__level current" data-id='1'><span class='checkmark'></span><span class='level-number'>1</span>Text</a>-->
+<!--                <a class="levels__level evels__level_completed" data-id='1'><span class='checkmark'></span><span class='level-number'>1</span>Text</a>-->
+<!--                <a class="levels__level evels__level_current" data-id='1'><span class='checkmark'></span><span class='level-number'>1</span>Text</a>-->
             </div>
             <a class="reset-progress" href="#">Reset Progress</a>
         `;
