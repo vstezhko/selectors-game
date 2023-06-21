@@ -8,26 +8,25 @@
   font-size: 2.5rem;
   padding: 0 0 1rem 0;
   color: #777;
-}
 
-.checkmark {
-  position: relative;
-  display: inline-block;
-  margin-left: 8px;
-  width: 12px;
-  height: 20px;
-  opacity: 2;
-  border: solid 3px white;
-  border-width: 0 4px 4px 0;
-  opacity: .2;
-  top: -3px;
-  transform: rotate(40deg);
-}
+  .checkmark {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.8rem;
+    width: 1.2rem;
+    height: 2rem;
+    border: solid white;
+    border-width: 0 0.4rem 0.4rem 0;
+    opacity: .2;
+    top: -0.3rem;
+    transform: rotate(40deg);
+  }
 
-.completed .checkmark {
-  opacity: .7;
-  border: solid 3px #4cbb4a;
-  border-width: 0 4px 4px 0;
+  &_completed .checkmark {
+    opacity: .7;
+    border: solid #4cbb4a;
+    border-width: 0 0.4rem 0.4rem 0;
+  }
 }
 
 .rules__content {
