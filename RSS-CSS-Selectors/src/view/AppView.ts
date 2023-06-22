@@ -20,6 +20,7 @@ export class AppView {
     public drawHeader(): void {
         console.log('header');
         this.header.draw();
+        this.footer.draw();
         this.levels.draw();
         this.rules.draw(levelsData[0]);
     }

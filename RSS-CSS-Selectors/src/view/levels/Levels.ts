@@ -1,23 +1,14 @@
-const levelsData = require('../../model/levelsData.json');
+import { Element } from '../../types/type';
+import { ILevelData } from '../../types/interface';
 
-type LevelDataType = {
-    levelNumber: string;
-    title: string;
-    selectorName: string;
-    doThis: string;
-    selector: string;
-    syntax: string;
-    hint: string;
-    examples: string[];
-    boardMarkup: string;
-};
+const levelsData = require('../../model/levelsData.json');
 
 export class Levels {
     public draw(): void {
         console.log('levels', levelsData);
-        const levelsContainer = document.querySelector<HTMLDivElement>('.levels');
+        const levelsContainer: Element = document.querySelector<HTMLDivElement>('.levels');
         let generatedLevels = '';
-        levelsData.forEach((level: LevelDataType) => {
+        levelsData.forEach((level: ILevelData) => {
             generatedLevels += `
                 <a class="levels__level" data-id="1"><span class="checkmark"></span><span class="level-number">${level.levelNumber}</span>${level.syntax}</a>
             `;
@@ -36,7 +27,7 @@ export class Levels {
             levelsContainer.innerHTML += levelsLayout;
         }
 
-        const levelsBtn = document.querySelector('.menu');
+        const levelsBtn: Element = document.querySelector('.menu');
         if (levelsBtn && levelsContainer) {
             levelsBtn.addEventListener('click', () => {
                 levelsBtn.classList.toggle('menu_active');
