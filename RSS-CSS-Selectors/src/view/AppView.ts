@@ -28,6 +28,8 @@ export class AppView {
         this.header.draw();
         this.footer.draw();
         this.levels.draw();
+        this.inputPane.draw();
+        this.markupPane.draw();
         this.rules.draw(levelsData[0]);
     }
 }
