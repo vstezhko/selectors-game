@@ -1,0 +1,59 @@
+.input-pane {
+  .input-pane__input {
+    font-family: menlo, monospace;
+    color: #333;
+    border: none;
+    width: calc(100% - 44px);
+    background: none;
+
+    &.input-strobe {
+      background: rgba(62,203,255,.3);
+      animation: input .5s infinite;
+    }
+
+    @keyframes input {
+      50% { background:none ; }
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #555;
+    }
+  }
+
+  .input-pane__button {
+    background: #ddd;
+    display: block;
+    -webkit-border-radius: 0.2rem;
+    border-radius: 0.2rem;
+    padding: 0.2rem 0.7rem;
+    color: #666;
+    border: solid #999;
+    border-width: 0.1rem 0.1rem 0.6rem 0.1rem;
+    position: absolute;
+    right: 0.7rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    top: 0.7rem;
+    z-index: 10;
+  }
+
+  .enterhit {
+    -webkit-animation: enterhit .1s 1;
+    animation: enterhit .1s 1;
+  }
+
+  @-webkit-keyframes enterhit {
+    50% {
+      border-width: 1px 1px 2px 1px;
+      top: 12px;
+    }
+  }
+  @keyframes enterhit {
+    50% {
+      border-width: 1px 1px 2px 1px;
+      top: 12px;
+    }
+  }
+
+}
