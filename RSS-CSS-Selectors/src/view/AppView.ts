@@ -4,6 +4,7 @@ import { Footer } from './footer/Footer';
 import { Rules } from './rules/Rules';
 import { InputPane } from './editor/inputPane/InputPane';
 import { MarkupPane } from './editor/markupPane/markupPane';
+import { Table } from './table/Table';
 
 const levelsData = require('../model/levelsData.json');
 
@@ -14,6 +15,7 @@ export class AppView {
     private readonly rules;
     private readonly inputPane;
     private readonly markupPane;
+    private readonly table;
     constructor() {
         this.header = new Header();
         this.footer = new Footer();
@@ -21,6 +23,7 @@ export class AppView {
         this.rules = new Rules();
         this.inputPane = new InputPane();
         this.markupPane = new MarkupPane();
+        this.table = new Table();
     }
 
     public drawHeader(): void {
@@ -30,6 +33,7 @@ export class AppView {
         this.levels.draw();
         this.inputPane.draw();
         this.markupPane.draw();
+        this.table.draw();
         this.rules.draw(levelsData[0]);
     }
 }

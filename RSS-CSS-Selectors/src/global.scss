@@ -1,5 +1,7 @@
 @import "./view/appView";
 
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -22,38 +24,23 @@ body {
   font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
   color: rgba(255, 255, 255, .7);
   font-size: 1.4rem;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .wrapper {
-  display: grid;
+  display: flex;
   height: 100%;
-  grid-template-areas: "header aside"
-  "table aside"
-  "editor aside"
-  "footer aside";
-  grid-template-columns: 3fr 30rem;
-  grid-template-rows: auto 1fr auto auto;
+  overflow: hidden;
+}
+
+.main {
   overflow-y: auto;
-}
-
-.header {
-  grid-area: header;
-}
-
-.table {
-  grid-area: table;
-  background: blue;
-}
-
-.editor {
-  grid-area: editor;
+  width: 100%;
 }
 
 .aside {
-  grid-area: aside;
-  position: fixed;
+  flex-shrink: 0;
+  position: sticky;
   width: 30rem;
   top: 0;
   right: 0;
@@ -80,7 +67,6 @@ h2 {
 h3 {
   font-size: 1.6rem;
 }
-
 
 
 /// Burger
@@ -128,3 +114,14 @@ h3 {
   }
 }
 
+
+// scrollbar
+*::-webkit-scrollbar {
+  width: 0.4rem;
+  background-color: #1e1e1e;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.3);
+}
