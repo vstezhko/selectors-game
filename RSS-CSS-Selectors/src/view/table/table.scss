@@ -1,3 +1,113 @@
-.table {
+.table-area {
+  transform: translate3d(0, 0, 0);
+  perspective: 400px;
+  text-align: center;
+  position: relative;
+  padding-top: 15px;
+  margin-bottom: 50px;
 
+  .table-container {
+    transform: rotateX(20deg);
+    min-height: 142px;
+    transform-origin: bottom;
+    z-index: 9999;
+    position: relative;
+    margin: 10px auto 0 auto;
+    width: fit-content;
+
+    .table-surface {
+      box-shadow: 0px 40px 10px rgba(0, 0, 0, .2);
+      background: #dd992d;
+      background: linear-gradient(#dd992d, #cd8c26);
+      position: absolute;
+      height: 100%;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .table {
+      transform-style: preserve-3d;
+      outline: solid 1px transparent;
+      margin: 0 auto;
+      min-height: 142px;
+      padding: 15px 15px 22px 15px;
+      display: inline-block;
+      z-index: 999;
+      position: relative;
+      white-space: nowrap;
+    }
+
+
+    orange, apple, pickle, bento, plate {
+      transition: transform ease-out .2s;
+    }
+
+    bento,
+    plate {
+      box-shadow: 0 8px 0 rgba(0, 0, 0, .1);
+      display: inline-block;
+      width: 10rem;
+      height: 10rem;
+      margin: 0 1rem;
+      position: relative;
+    }
+
+    plate {
+      display: inline-block;
+      border-bottom: solid 5px #DDD;
+      background: white;
+      border-radius: 100px;
+      box-shadow: 0 8px 0 rgba(0, 0, 0, .1);
+      width: 100px;
+      height: 100px;
+      margin: 0 10px;
+      position: relative;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: calc(50% - 32px);
+        top: calc(50% - 32px);
+        height: 65px;
+        width: 65px;
+        border-radius: 60px;
+        border-top: solid 6px #CCC;
+        opacity: .4;
+        background: rgba(255, 255, 255, 1);
+      }
+
+      &#fancy:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: calc(50% - 47px);
+        top: calc(50% - 44px);
+        height: 6.8rem;
+        width: 7.4rem;
+        border-radius: 6rem;
+        border: solid 1rem #009ff2;
+        opacity: .4;
+      }
+    }
+
+    bento {
+      height: 10rem;
+      background: brown;
+      position: relative;
+      border: solid #711c12;
+      border-width: 2rem 0.2rem;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: calc(100%);
+        top: 0;
+        left: 0;
+        border: solid rgba(0, 0, 0, .1);
+        border-width: 1rem 0 0 0;
+      }
+    }
+
+  }
 }
