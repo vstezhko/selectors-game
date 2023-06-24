@@ -1,6 +1,6 @@
 export const transformToGameMarkup = (html: string[]): string => {
     const newArray = html.map((tag) => {
-        // </ ... >   =>  /&gt;close      (=> /></div>;)
+        // </ ... >   =>  /&gt;close      (=> ></div>;)
         if (/<\/\w+>/g.test(tag)) {
             tag = tag.replace(/>/g, '&gt;close');
         }
