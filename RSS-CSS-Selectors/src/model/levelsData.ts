@@ -13,7 +13,7 @@ export const levelsData: ILevelData[] = [
             '<strong>div</strong> selects all <tag>div</tag> elements.',
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
-        boardMarkup: '<plate/><plate/>',
+        boardMarkup: ['<plate />', '<plate />'],
     },
     {
         levelNumber: 2,
@@ -27,7 +27,7 @@ export const levelsData: ILevelData[] = [
             '<strong>div</strong> selects all <tag>div</tag> elements.',
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
-        boardMarkup: '<plate><apple /></plate><plate/>',
+        boardMarkup: ['<plate>', '<apple/>', '</plate>', '<plate />'],
     },
     {
         levelNumber: 3,
@@ -41,7 +41,7 @@ export const levelsData: ILevelData[] = [
             '<strong>div</strong> selects all <tag>div</tag> elements.',
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
-        boardMarkup: '<plate/><plate/>',
+        boardMarkup: ['<plate>', '<apple/>', '</plate>', '<plate />'],
     },
     {
         levelNumber: 4,
@@ -55,7 +55,7 @@ export const levelsData: ILevelData[] = [
             '<strong>div</strong> selects all <tag>div</tag> elements.',
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
-        boardMarkup: '<plate/><plate/>',
+        boardMarkup: ['<plate>', '<apple/>', '</plate>', '<plate />'],
     },
     {
         levelNumber: 5,
@@ -69,7 +69,7 @@ export const levelsData: ILevelData[] = [
             '<strong>div</strong> selects all <tag>div</tag> elements.',
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
-        boardMarkup: '<plate/><plate/>',
+        boardMarkup: ['<plate>', '<apple/>', '</plate>', '<plate />'],
     },
     // {
     //     levelNumber: '6',

@@ -7,7 +7,7 @@ export interface ILevelData {
     syntax: string;
     hint: string;
     examples: string[];
-    boardMarkup: string;
+    boardMarkup: string[];
 }
 
 export interface ITemplateStartData {

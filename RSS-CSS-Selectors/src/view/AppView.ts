@@ -28,7 +28,7 @@ export class AppView {
         this.levels = new Levels();
         this.rules = new Rules(levelsData);
         this.inputPane = new InputPane();
-        this.markupPane = new MarkupPane();
+        this.markupPane = new MarkupPane(levelsData);
         this.table = new Table();
         this.levelInfo = new LevelInfo();
     }
@@ -39,7 +39,7 @@ export class AppView {
         this.footer.draw();
         this.levels.draw(1);
         this.inputPane.draw();
-        this.markupPane.draw();
+        this.markupPane.draw(1);
         this.table.draw();
         this.levelInfo.draw();
         this.rules.draw(levelsData[0]);

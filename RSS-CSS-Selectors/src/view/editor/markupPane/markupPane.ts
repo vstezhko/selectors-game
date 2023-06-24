@@ -1,12 +1,25 @@
 import { Element } from '../../../types/type';
 import { transformToGameMarkup } from '../../../utils/transformToMarkup';
+import DataStorage from '../../../data-storage/DataStorage';
+import { ILevelData } from '../../../types/interface';
+import { StorageGameDataNames } from '../../../types/enum';
+import { levelsData } from '../../../model/levelsData';
 
 export class MarkupPane {
-    public draw(): void {
+    private storage = DataStorage.getInstance();
+    private readonly levelsData: ILevelData[];
+
+    constructor(levelsData: ILevelData[]) {
+        this.levelsData = levelsData;
+        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(level));
+    }
+
+    public draw(level: number): void {
         console.log('MarkupPane');
 
         const markupPaneContainer: Element = document.querySelector<HTMLDivElement>('.markup-pane');
-        const innerMarkup = transformToGameMarkup(['<plate>', '<apple />', '</plate>', '<plate />']);
+        // const innerMarkup = transformToGameMarkup(['<plate>', '<apple />', '</plate>', '<plate />']);
+        const innerMarkup = transformToGameMarkup(levelsData[level - 1].boardMarkup);
         const markupPaneLayout = `
             <div class='pane-header'>
                 <div class='pane-header__name'>HTML Editor</div>
@@ -36,6 +49,5 @@ export class MarkupPane {
         if (markupPaneContainer) {
             markupPaneContainer.innerHTML = markupPaneLayout;
         }
-
     }
 }
