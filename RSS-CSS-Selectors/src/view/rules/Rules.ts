@@ -1,7 +1,17 @@
 import { ILevelData } from '../../types/interface';
 import { Element } from '../../types/type';
+import DataStorage from '../../data-storage/DataStorage';
+import { StorageGameDataNames } from '../../types/enum';
 
 export class Rules {
+    private storage = DataStorage.getInstance();
+    private readonly levelsData: ILevelData[];
+
+    constructor(levelsData: ILevelData[]) {
+        this.levelsData = levelsData;
+        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(this.levelsData[level - 1]));
+    }
+
     public draw(level: ILevelData): void {
         const rulesContainer: Element = document.querySelector('.rules');
         const rulesLayout = `

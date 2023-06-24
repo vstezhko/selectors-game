@@ -37,6 +37,15 @@ export class Levels {
             levelsContainer.innerHTML += levelsLayout;
         }
 
+        // todo remove menu methods
+        const levelsBtn: Element = document.querySelector('.menu');
+        if (levelsBtn && levelsContainer) {
+            levelsBtn.addEventListener('click', () => {
+                levelsBtn.classList.toggle('menu_active');
+                levelsContainer.classList.toggle('levels_opened');
+            });
+        }
+
         this.levelsListContainer = document.querySelector('.levels__list');
 
         if (this.levelsListContainer instanceof HTMLElement && !!this.levelsListContainer) {
@@ -45,17 +54,14 @@ export class Levels {
                     if (e.target.dataset.id) {
                         const level: number = +e.target.dataset.id;
                         this.storage.setValue(StorageGameDataNames.CURRENT_LEVEL, level);
+
+                        // todo refactor
+                        if (levelsBtn && levelsContainer) {
+                            levelsBtn.classList.remove('menu_active');
+                            levelsContainer.classList.remove('levels_opened');
+                        }
                     }
                 }
-            });
-        }
-
-        // todo remove menu methods
-        const levelsBtn: Element = document.querySelector('.menu');
-        if (levelsBtn && levelsContainer) {
-            levelsBtn.addEventListener('click', () => {
-                levelsBtn.classList.toggle('menu_active');
-                levelsContainer.classList.toggle('levels_opened');
             });
         }
     }

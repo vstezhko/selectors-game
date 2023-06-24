@@ -26,7 +26,7 @@ export class AppView {
         this.header = new Header();
         this.footer = new Footer();
         this.levels = new Levels();
-        this.rules = new Rules();
+        this.rules = new Rules(levelsData);
         this.inputPane = new InputPane();
         this.markupPane = new MarkupPane();
         this.table = new Table();
@@ -37,7 +37,7 @@ export class AppView {
         console.log('header');
         this.header.draw();
         this.footer.draw();
-        this.levels.draw(this.startLevel);
+        this.levels.draw(1);
         this.inputPane.draw();
         this.markupPane.draw();
         this.table.draw();
