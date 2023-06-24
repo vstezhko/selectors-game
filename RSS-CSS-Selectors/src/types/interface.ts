@@ -1,5 +1,5 @@
 export interface ILevelData {
-    levelNumber: string;
+    levelNumber: number;
     title: string;
     selectorName: string;
     doThis: string;
@@ -8,4 +8,9 @@ export interface ILevelData {
     hint: string;
     examples: string[];
     boardMarkup: string;
+}
+
+export interface ITemplateStartData {
+    currentLevel: number;
+    completed: Set<number>;
 }
