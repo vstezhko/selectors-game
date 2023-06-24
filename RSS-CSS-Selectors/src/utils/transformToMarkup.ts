@@ -2,7 +2,7 @@ export const transformToGameMarkup = (html: string[]): string => {
     const newArray = html.map((tag) => {
         // </ ... >   =>  /&gt;close      (=> /></div>;)
         if (/<\/\w+>/g.test(tag)) {
-            tag = tag.replace(/>/g, '/&gt;close');
+            tag = tag.replace(/>/g, '&gt;close');
         }
 
         // </   =>   &lt;/     (=> </)
@@ -27,8 +27,6 @@ export const transformToGameMarkup = (html: string[]): string => {
 
         return tag.replace(/open/g, '<div>').replace(/close/g, '</div>');
     });
-
-    console.log(newArray);
 
     return newArray.join('');
 };
