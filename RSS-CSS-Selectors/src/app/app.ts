@@ -9,6 +9,7 @@ class App {
     public start(): void {
         console.log('start');
         this.appView.drawHeader();
+        this.appView.drawBurgerBtn();
     }
 }
 

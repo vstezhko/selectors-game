@@ -9,6 +9,8 @@ import { LevelInfo } from './level-info/LevelInfo';
 import { levelsData } from '../model/levelsData';
 import DataStorage from '../data-storage/DataStorage';
 import { StorageGameDataNames } from '../types/enum';
+import { BurgerBtn } from './burgerBtn/BurgerBtn';
+import { Element } from '../types/type';
 
 export class AppView {
     private readonly header;
@@ -21,11 +23,12 @@ export class AppView {
     private readonly levelInfo;
     private storage = DataStorage.getInstance();
     private readonly startLevel;
+
     constructor() {
         this.startLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL);
         this.header = new Header();
         this.footer = new Footer();
-        this.levels = new Levels();
+        this.levels = new Levels(levelsData);
         this.rules = new Rules(levelsData);
         this.inputPane = new InputPane();
         this.markupPane = new MarkupPane(levelsData);
@@ -34,7 +37,6 @@ export class AppView {
     }
 
     public drawHeader(): void {
-        console.log('header');
         this.header.draw();
         this.footer.draw();
         this.levels.draw(1);
@@ -43,5 +45,11 @@ export class AppView {
         this.table.draw();
         this.levelInfo.draw();
         this.rules.draw(levelsData[0]);
+    }
+
+    public drawBurgerBtn(): void {
+        const btn = BurgerBtn.getInstance();
+        const asideContainer: Element = document.querySelector('.aside');
+        btn.draw(asideContainer);
     }
 }
