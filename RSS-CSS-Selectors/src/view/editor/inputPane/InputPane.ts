@@ -23,8 +23,18 @@ export class InputPane {
     }
 
     setHintValue(level: number) {
-        this.input && (this.input.value = this.levelsData[level - 1].selector);
         this.hint = StorageCompletedNames.HINT;
+        const hint = this.levelsData[level - 1].selector;
+
+        let index = 0;
+        const interval = setInterval(() => {
+            this.input && (this.input.value += hint[index]);
+            index++;
+
+            if (index === hint.length) {
+                clearInterval(interval);
+            }
+        }, 150);
     }
 
     public draw(): void {
@@ -86,7 +96,7 @@ export class InputPane {
             if (!res.checkResult) {
                 if (editorContainer) {
                     editorContainer.classList.add('shake');
-                    editorContainer.addEventListener('animationend', function () {
+                    editorContainer.addEventListener('animationend', function() {
                         editorContainer.classList.remove('shake');
                     });
                 }
