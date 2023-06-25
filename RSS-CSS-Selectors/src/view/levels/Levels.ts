@@ -73,7 +73,6 @@ export class Levels {
 
     renderLevels(currentLevel: number) {
         if (this.levelsListContainer) {
-            console.log('rendering new Levels');
             this.levelsListContainer.innerHTML = this.generateLevelsListLayout(currentLevel);
         }
     }

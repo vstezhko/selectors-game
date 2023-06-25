@@ -18,6 +18,9 @@ export class Table {
     public draw(currentLevel: number): void {
         if (this.table) {
             this.table.innerHTML = levelsData[currentLevel - 1].realMarkup;
+            document.querySelectorAll(levelsData[currentLevel - 1].selector).forEach((node) => {
+                node.classList.add('strobe');
+            });
         }
     }
 }

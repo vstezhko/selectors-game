@@ -32,7 +32,6 @@ export class InputPane {
 
         let index = 0;
         const interval = setInterval(() => {
-            console.log(index, hint[index]);
             this.input && (this.input.value += hint[index]);
             index++;
 
@@ -45,7 +44,6 @@ export class InputPane {
     }
 
     public draw(): void {
-        console.log('InputPane');
         const inputPaneContainer: Element = document.querySelector<HTMLDivElement>('.input-pane');
         const inputPaneLayout = `
             <div class='pane-header'>
@@ -104,27 +102,30 @@ export class InputPane {
                     });
                 }
             } else {
-                res.nodes?.forEach((node, index) => {
-                    if (node instanceof HTMLElement) {
-                        node.classList.add('clean');
+                res.nodes &&
+                    res.nodes?.forEach((node, index) => {
+                        if (node instanceof HTMLElement) {
+                            node.classList.remove('strobe');
+                            node.classList.add('clean');
 
-                        if (index + 1 === res.nodes?.length) {
-                            node.addEventListener('animationend', () => {
-                                if (currentLevel < this.levelsData.length) {
-                                    this.storage.setCurrentLevel(currentLevel + 1);
+                            if (res.nodes) {
+                                if (index + 1 === res.nodes.length) {
+                                    node.addEventListener('animationend', () => {
+                                        if (currentLevel < this.levelsData.length) {
+                                            this.storage.setCurrentLevel(currentLevel + 1);
+                                        }
+                                        this.storage.setCompletedLevel(currentLevel, this.hint);
+                                        this.hint = StorageCompletedNames.SELF;
+                                    });
                                 }
-                                this.storage.setCompletedLevel(currentLevel, this.hint);
-                                this.hint = StorageCompletedNames.SELF;
-                            });
+                            }
                         }
-                    }
-                });
+                    });
             }
         }
     }
 
     keyDownListener = (e: KeyboardEvent) => {
-        console.log('asdfghjkasdfghjksdfghj');
         if (e.key === 'Enter') {
             this.input && this.input.value && this.handleSubmitSolution(this.input);
         }
