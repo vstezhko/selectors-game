@@ -14,6 +14,7 @@ export const levelsData: ILevelData[] = [
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
         boardMarkup: ['<plate />', '<plate />'],
+        realMarkup: `<plate></plate><plate></plate>`,
     },
     {
         levelNumber: 2,
@@ -28,6 +29,7 @@ export const levelsData: ILevelData[] = [
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
         boardMarkup: ['<plate />', '<plate id="fancy" />', '<plate />'],
+        realMarkup: `<plate></plate><plate id='fancy'></plate><plate></plate>`,
     },
     {
         levelNumber: 3,
@@ -42,6 +44,7 @@ export const levelsData: ILevelData[] = [
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
         boardMarkup: ['<plate />', '<plate>', '<apple />', '</plate>', '<apple />'],
+        realMarkup: `<plate></plate><plate><apple></apple></plate><apple></apple>`,
     },
     {
         levelNumber: 4,
@@ -56,6 +59,7 @@ export const levelsData: ILevelData[] = [
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
         boardMarkup: ['<plate>', '<apple />', '</plate>', '<plate id="fancy">', '<apple />', '</plate>'],
+        realMarkup: `<plate></plate><plate><apple></apple></plate><apple></apple>`,
     },
     {
         levelNumber: 5,
@@ -70,6 +74,7 @@ export const levelsData: ILevelData[] = [
             '<strong>p</strong> selects all <tag>p</tag> elements.',
         ],
         boardMarkup: ['<plate>', '<apple/>', '</plate>', '<plate />'],
+        realMarkup: `<plate><bento></bento></plate><plate><apple></apple></plate><apple></apple>`,
     },
     // {
     //     levelNumber: '6',
