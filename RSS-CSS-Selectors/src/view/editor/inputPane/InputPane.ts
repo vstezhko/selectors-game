@@ -99,6 +99,7 @@ export class InputPane {
                             node.addEventListener('animationend', () => {
                                 this.storage.setCurrentLevel(currentLevel + 1);
                                 this.storage.setCompletedLevel(currentLevel, this.hint);
+                                this.hint = StorageCompletedNames.SELF;
                             });
                         }
                     }
