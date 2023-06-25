@@ -96,7 +96,7 @@ export class InputPane {
             if (!res.checkResult) {
                 if (editorContainer) {
                     editorContainer.classList.add('shake');
-                    editorContainer.addEventListener('animationend', function() {
+                    editorContainer.addEventListener('animationend', () => {
                         editorContainer.classList.remove('shake');
                     });
                 }
