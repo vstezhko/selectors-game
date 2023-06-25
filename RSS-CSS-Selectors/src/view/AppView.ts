@@ -30,7 +30,7 @@ export class AppView {
         this.footer = new Footer();
         this.levels = new Levels(levelsData);
         this.rules = new Rules(levelsData);
-        this.inputPane = new InputPane();
+        this.inputPane = new InputPane(levelsData);
         this.markupPane = new MarkupPane(levelsData);
         this.table = new Table(levelsData);
         this.levelInfo = new LevelInfo();

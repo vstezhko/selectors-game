@@ -9,6 +9,7 @@ export interface ILevelData {
     examples: string[];
     boardMarkup: string[];
     realMarkup: string;
+    answer: string;
 }
 
 export interface ITemplateStartData {
