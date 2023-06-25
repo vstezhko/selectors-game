@@ -12,4 +12,18 @@
     text-align: center;
     padding: 2rem 3rem;
   }
+
+  .table__note-toggle {
+    background: rgba(0,0,0,.2);
+    color: rgba(255,255,255,.3);
+    padding: 8px 15px 10px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      text-decoration: underline;
+      color: rgba(255,255,255,.4);
+    }
+  }
 }

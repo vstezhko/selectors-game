@@ -21,8 +21,8 @@ export const levelsData: ILevelData[] = [
         levelNumber: 2,
         title: '2Select elements by their type',
         selectorName: '2Type Selector',
-        doThis: '2Select the plates',
-        selector: 'plate',
+        doThis: 'Select element by their id',
+        selector: '#fancy',
         syntax: 'A',
         hint: 'Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
         examples: [
@@ -36,9 +36,9 @@ export const levelsData: ILevelData[] = [
     {
         levelNumber: 3,
         title: '3Select elements by their type',
-        selectorName: '3Type Selector',
+        selectorName: 'Select apple on the plate',
         doThis: '3Select the plates',
-        selector: 'plate',
+        selector: 'plate apple',
         syntax: 'A',
         hint: 'Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
         examples: [
@@ -52,9 +52,9 @@ export const levelsData: ILevelData[] = [
     {
         levelNumber: 4,
         title: '4Select elements by their type',
-        selectorName: '4Type Selector',
+        selectorName: 'Select apple on the fancy plate',
         doThis: '4Select the plates',
-        selector: 'plate',
+        selector: '#fancy apple',
         syntax: 'A',
         hint: 'Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
         examples: [
@@ -68,9 +68,9 @@ export const levelsData: ILevelData[] = [
     {
         levelNumber: 5,
         title: '5Select elements by their type',
-        selectorName: '5Type Selector',
+        selectorName: 'Select bento',
         doThis: '5Select the plates',
-        selector: 'plate',
+        selector: 'bento',
         syntax: 'A',
         hint: 'Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
         examples: [

@@ -33,7 +33,7 @@ export class AppView {
         this.inputPane = new InputPane(levelsData);
         this.markupPane = new MarkupPane(levelsData);
         this.table = new Table(levelsData);
-        this.levelInfo = new LevelInfo();
+        this.levelInfo = new LevelInfo(levelsData);
     }
 
     public drawHeader(): void {
@@ -43,7 +43,7 @@ export class AppView {
         this.inputPane.draw();
         this.markupPane.draw(1);
         this.table.draw(1);
-        this.levelInfo.draw();
+        this.levelInfo.draw(1);
         this.rules.draw(levelsData[0]);
     }
 

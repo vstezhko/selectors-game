@@ -15,6 +15,11 @@ export default class DataStorage {
         return this.instanceDataStorage;
     }
 
+    setHintLevel(value: number) {
+        this.gameData.set(StorageGameDataNames.HINT, value);
+        this.notify(StorageGameDataNames.HINT, value);
+    }
+
     setCurrentLevel(value: number) {
         this.gameData.set(StorageGameDataNames.CURRENT_LEVEL, value);
         this.notify(StorageGameDataNames.CURRENT_LEVEL, value);

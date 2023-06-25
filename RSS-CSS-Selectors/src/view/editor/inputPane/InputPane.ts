@@ -7,9 +7,24 @@ import { StorageCompletedNames, StorageGameDataNames } from '../../../types/enum
 export class InputPane {
     private storage = DataStorage.getInstance();
     private readonly levelsData: ILevelData[];
+    private input: Input;
+    private hint: StorageCompletedNames;
 
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
+        this.input = null;
+        this.hint = StorageCompletedNames.SELF;
+        this.storage.subscribe(StorageGameDataNames.HINT, (level) => this.setHintValue(level));
+        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, () => this.clearInput());
+    }
+
+    clearInput() {
+        this.input && (this.input.value = '');
+    }
+
+    setHintValue(level: number) {
+        this.input && (this.input.value = this.levelsData[level - 1].selector);
+        this.hint = StorageCompletedNames.HINT;
     }
 
     public draw(): void {
@@ -44,17 +59,17 @@ export class InputPane {
             inputPaneContainer.innerHTML = inputPaneLayout;
         }
 
-        const input: Input = document.querySelector('.input-pane__input');
+        this.input = document.querySelector('.input-pane__input');
         const btn = document.querySelector('.input-pane__button');
 
-        if (input && btn) {
+        if (btn) {
             btn.addEventListener('click', () => {
-                input.value && this.handleSubmitSolution(input);
+                this.input && this.input.value && this.handleSubmitSolution(this.input);
             });
 
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
-                    input.value && this.handleSubmitSolution(input);
+                    this.input && this.input.value && this.handleSubmitSolution(this.input);
                 }
             });
         }
@@ -83,7 +98,7 @@ export class InputPane {
                         if (index + 1 === res.nodes?.length) {
                             node.addEventListener('animationend', () => {
                                 this.storage.setCurrentLevel(currentLevel + 1);
-                                this.storage.setCompletedLevel(currentLevel, StorageCompletedNames.HINT);
+                                this.storage.setCompletedLevel(currentLevel, this.hint);
                             });
                         }
                     }
