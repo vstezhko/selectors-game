@@ -122,6 +122,8 @@
     width: 3rem;
     display: inline-block;
     opacity: .25;
+    cursor: pointer;
+    user-select: none;
 
     &:after {
       content: "";
