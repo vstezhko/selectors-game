@@ -8,11 +8,13 @@ export class InputPane {
     private storage = DataStorage.getInstance();
     private readonly levelsData: ILevelData[];
     private input: Input;
+    private btn: HTMLButtonElement | null;
     private hint: StorageCompletedNames;
 
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
         this.input = null;
+        this.btn = null;
         this.hint = StorageCompletedNames.SELF;
         this.storage.subscribe(StorageGameDataNames.HINT, (level) => this.setHintValue(level));
         this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, () => this.clearInput());
@@ -25,14 +27,19 @@ export class InputPane {
     setHintValue(level: number) {
         this.hint = StorageCompletedNames.HINT;
         const hint = this.levelsData[level - 1].selector;
+        this.btn && (this.btn.disabled = true);
+        document.removeEventListener('keydown', this.keyDownListener);
 
         let index = 0;
         const interval = setInterval(() => {
+            console.log(index, hint[index]);
             this.input && (this.input.value += hint[index]);
             index++;
 
             if (index === hint.length) {
                 clearInterval(interval);
+                this.btn && (this.btn.disabled = false);
+                document.addEventListener('keydown', this.keyDownListener);
             }
         }, 150);
     }
@@ -70,18 +77,14 @@ export class InputPane {
         }
 
         this.input = document.querySelector('.input-pane__input');
-        const btn = document.querySelector('.input-pane__button');
+        this.btn = document.querySelector('.input-pane__button');
 
-        if (btn) {
-            btn.addEventListener('click', () => {
+        if (this.btn) {
+            this.btn.addEventListener('click', () => {
                 this.input && this.input.value && this.handleSubmitSolution(this.input);
             });
 
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    this.input && this.input.value && this.handleSubmitSolution(this.input);
-                }
-            });
+            document.addEventListener('keydown', this.keyDownListener);
         }
     }
 
@@ -119,4 +122,11 @@ export class InputPane {
             }
         }
     }
+
+    keyDownListener = (e: KeyboardEvent) => {
+        console.log('asdfghjkasdfghjksdfghj');
+        if (e.key === 'Enter') {
+            this.input && this.input.value && this.handleSubmitSolution(this.input);
+        }
+    };
 }

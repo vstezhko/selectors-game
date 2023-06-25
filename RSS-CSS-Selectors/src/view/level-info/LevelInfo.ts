@@ -17,7 +17,7 @@ export class LevelInfo {
         const levelInfoContainer: Element = document.querySelector<HTMLDivElement>('.level-info');
         const levelInfoLayout = `
             <h2 class='table__doThis'>${this.levelsData[levelNumber - 1].doThis}</h2>
-            <a class='table__note-toggle' href='#'>Help, I'm stuck!</a>
+            <p class='table__note-toggle'>Help, I'm stuck!</p>
         `;
 
         if (levelInfoContainer) {
