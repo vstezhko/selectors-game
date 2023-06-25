@@ -19,6 +19,10 @@ export class Rules {
                 <span class='rules__text'>Level ${level.levelNumber} of 10</span>
                 <span class='checkmark'></span>
             </h2>
+            <div class='level-nav'>
+                <a class='prev'></a>
+                <a class='next'></a>
+            </div>
             <div class='rules__content'>
                 <h4 class='selector-name'>${level.selectorName}</h4>
                 <h3 class='title'>${level.title}</h3>
@@ -40,5 +44,22 @@ export class Rules {
         if (rulesContainer) {
             rulesContainer.innerHTML = rulesLayout;
         }
+
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+
+        [prev, next].forEach((btn) => {
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    if (btn.classList.contains('next') && level.levelNumber < this.levelsData.length) {
+                        this.storage.setValue(StorageGameDataNames.CURRENT_LEVEL, level.levelNumber + 1);
+                    }
+
+                    if (btn.classList.contains('prev') && level.levelNumber > 1) {
+                        this.storage.setValue(StorageGameDataNames.CURRENT_LEVEL, level.levelNumber - 1);
+                    }
+                });
+            }
+        });
     }
 }

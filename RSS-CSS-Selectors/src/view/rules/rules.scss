@@ -93,9 +93,9 @@
   tag {
     color: #AAA;
     background: rgba(255, 255, 255, .1);
-    padding: 3px 6px 3px 6px;
+    padding: 0.3rem 0.6rem 0.3rem 0.6rem;
     margin: 0 2px;
-    font-size: 13px;
+    font-size: 1.3rem;
     font-family: menlo, monospace;
     font-weight: normal;
 
@@ -106,6 +106,48 @@
     &:after {
       content: ">";
     }
+  }
+}
+
+.level-nav {
+  position: absolute;
+  right: 6rem;
+  top: 2rem;
+  line-height: 0;
+
+  & > a {
+    padding: 0.5rem;
+    position: relative;
+    height: 3rem;
+    width: 3rem;
+    display: inline-block;
+    opacity: .25;
+
+    &:after {
+      content: "";
+      height: 1.8rem;
+      width: 1.8rem;
+      position: absolute;
+      border: solid white;
+      border-width: 0.2rem 0.2rem 0 0;
+      transform-origin: center center;
+      top: 0.6rem;
+      box-sizing: border-box;
+    }
+
+    &:hover {
+      opacity: .4;
+    }
+  }
+
+  .prev:after {
+    transform: rotate(-135deg);
+    right: 0.2rem;
+  }
+
+  .next:after {
+    transform: rotate(45deg);
+    left: 0.2rem;
   }
 }
 
