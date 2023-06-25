@@ -107,7 +107,9 @@ export class InputPane {
 
                         if (index + 1 === res.nodes?.length) {
                             node.addEventListener('animationend', () => {
-                                this.storage.setCurrentLevel(currentLevel + 1);
+                                if (currentLevel < this.levelsData.length) {
+                                    this.storage.setCurrentLevel(currentLevel + 1);
+                                }
                                 this.storage.setCompletedLevel(currentLevel, this.hint);
                                 this.hint = StorageCompletedNames.SELF;
                             });

@@ -1,4 +1,5 @@
 import { StorageCompletedNames } from './enum';
+import { CompletedLevels } from './type';
 
 export interface ILevelData {
     levelNumber: number;
@@ -17,5 +18,5 @@ export interface ILevelData {
 export interface ITemplateStartData {
     hint: null | number;
     currentLevel: number;
-    completed: Map<number, StorageCompletedNames>;
+    completed: CompletedLevels;
 }

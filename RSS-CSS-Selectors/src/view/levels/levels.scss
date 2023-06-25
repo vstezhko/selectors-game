@@ -55,15 +55,20 @@
     opacity: .2;
     top: -1px;
     transform: rotate(40deg);
-  }
 
-  &_completed {
-    .checkmark {
+    &_completed-self {
       opacity: .55;
       border: solid #4cbb4a;
       border-width: 0 0.3rem 0.3rem 0;
     }
+
+    &_completed-hint {
+      opacity: .55;
+      border: solid #efff40;
+      border-width: 0 0.3rem 0.3rem 0;
+    }
   }
+
 
   &_current {
     font-weight: bold;

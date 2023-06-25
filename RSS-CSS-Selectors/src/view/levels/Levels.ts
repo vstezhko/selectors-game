@@ -1,4 +1,4 @@
-import { Element } from '../../types/type';
+import { CompletedLevels, Element } from '../../types/type';
 import { ILevelData } from '../../types/interface';
 import DataStorage from '../../data-storage/DataStorage';
 import { StorageGameDataNames } from '../../types/enum';
@@ -8,10 +8,18 @@ export class Levels {
     private storage = DataStorage.getInstance();
     private levelsListContainer: Element;
     private readonly levelsData: ILevelData[];
+    private readonly completedLevels: CompletedLevels;
+    private currentLevel: number;
 
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
-        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.renderLevels(level));
+        this.completedLevels = this.storage.getValue(StorageGameDataNames.COMPLETED);
+        this.currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL);
+        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => {
+            this.renderLevels(level);
+            this.currentLevel = level;
+        });
+        this.storage.subscribe(StorageGameDataNames.COMPLETED, () => this.renderLevels(this.currentLevel));
         this.levelsListContainer = null;
     }
 
@@ -22,7 +30,11 @@ export class Levels {
             generatedLevels += `
                 <a class='levels__level ${level.levelNumber === currentLevel && 'levels__level_current'}' 
                 data-id='${level.levelNumber}'>
-                <span class='checkmark'></span>
+                <span class='checkmark ${
+                    this.completedLevels.has(level.levelNumber)
+                        ? 'checkmark_completed-' + this.completedLevels.get(level.levelNumber)
+                        : ''
+                }'></span>
                 <span class='level-number'>${level.levelNumber}</span>${level.syntax}</a>
             `;
         });
@@ -61,6 +73,7 @@ export class Levels {
 
     renderLevels(currentLevel: number) {
         if (this.levelsListContainer) {
+            console.log('rendering new Levels');
             this.levelsListContainer.innerHTML = this.generateLevelsListLayout(currentLevel);
         }
     }
