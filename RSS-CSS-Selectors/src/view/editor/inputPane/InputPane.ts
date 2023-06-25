@@ -2,7 +2,7 @@ import { Element, Input } from '../../../types/type';
 import { validateSolution } from '../../../utils/validateSolution';
 import { ILevelData } from '../../../types/interface';
 import DataStorage from '../../../data-storage/DataStorage';
-import { StorageGameDataNames } from '../../../types/enum';
+import { StorageCompletedNames, StorageGameDataNames } from '../../../types/enum';
 
 export class InputPane {
     private storage = DataStorage.getInstance();
@@ -66,15 +66,28 @@ export class InputPane {
             const res = validateSolution(input.value, levelsData[currentLevel - 1].answer);
             input.value = '';
 
-            if (!res) {
-                const editorContainer = document.querySelector('.editor');
+            const editorContainer = document.querySelector('.editor');
 
+            if (!res.checkResult) {
                 if (editorContainer) {
                     editorContainer.classList.add('shake');
                     editorContainer.addEventListener('animationend', function () {
                         editorContainer.classList.remove('shake');
                     });
                 }
+            } else {
+                res.nodes?.forEach((node, index) => {
+                    if (node instanceof HTMLElement) {
+                        node.classList.add('clean');
+
+                        if (index + 1 === res.nodes?.length) {
+                            node.addEventListener('animationend', () => {
+                                this.storage.setCurrentLevel(currentLevel + 1);
+                                this.storage.setCompletedLevel(currentLevel, StorageCompletedNames.HINT);
+                            });
+                        }
+                    }
+                });
             }
         }
     }

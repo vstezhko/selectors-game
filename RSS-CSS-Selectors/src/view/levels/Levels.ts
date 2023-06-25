@@ -49,7 +49,7 @@ export class Levels {
                 if (e.target instanceof HTMLElement && e.target.classList.contains('levels__level')) {
                     if (e.target.dataset.id) {
                         const level: number = +e.target.dataset.id;
-                        this.storage.setValue(StorageGameDataNames.CURRENT_LEVEL, level);
+                        this.storage.setCurrentLevel(level);
 
                         const burgerBtn = BurgerBtn.getInstance();
                         burgerBtn.toggleBtn();

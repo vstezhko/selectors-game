@@ -79,6 +79,7 @@
 
 .shake {
   animation: shake .1s 5;
+  box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0.5);
 }
 
 @keyframes shake {

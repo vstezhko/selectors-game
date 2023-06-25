@@ -1,5 +1,5 @@
 import { generateStartData } from '../model/startStorageData';
-import { StorageGameDataNames } from '../types/enum';
+import { StorageCompletedNames, StorageGameDataNames } from '../types/enum';
 
 export default class DataStorage {
     private static instanceDataStorage = new DataStorage();
@@ -15,9 +15,18 @@ export default class DataStorage {
         return this.instanceDataStorage;
     }
 
-    setValue(name: StorageGameDataNames, value: number) {
-        this.gameData.set(name, value);
-        this.notify(name, value);
+    setCurrentLevel(value: number) {
+        this.gameData.set(StorageGameDataNames.CURRENT_LEVEL, value);
+        this.notify(StorageGameDataNames.CURRENT_LEVEL, value);
+    }
+
+    setCompletedLevel(value: number, completedType: StorageCompletedNames) {
+        const completedMap = this.gameData.get(StorageGameDataNames.COMPLETED);
+        completedMap.set(value, completedType);
+
+        console.log(this.gameData);
+        // this.gameData.set(StorageGameDataNames.COMPLETED, completedMap);
+        this.notify(StorageGameDataNames.COMPLETED, value);
     }
 
     getValue(name: StorageGameDataNames) {

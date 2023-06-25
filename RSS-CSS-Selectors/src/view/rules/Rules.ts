@@ -52,11 +52,11 @@ export class Rules {
             if (btn) {
                 btn.addEventListener('click', () => {
                     if (btn.classList.contains('next') && level.levelNumber < this.levelsData.length) {
-                        this.storage.setValue(StorageGameDataNames.CURRENT_LEVEL, level.levelNumber + 1);
+                        this.storage.setCurrentLevel(level.levelNumber + 1);
                     }
 
                     if (btn.classList.contains('prev') && level.levelNumber > 1) {
-                        this.storage.setValue(StorageGameDataNames.CURRENT_LEVEL, level.levelNumber - 1);
+                        this.storage.setCurrentLevel(level.levelNumber - 1);
                     }
                 });
             }
