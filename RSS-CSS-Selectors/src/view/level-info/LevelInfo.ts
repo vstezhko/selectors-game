@@ -9,11 +9,10 @@ export class LevelInfo {
 
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
-        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(level));
+        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(level as number));
     }
 
     public draw(levelNumber: number): void {
-        console.log('LevelInfo');
         const levelInfoContainer: Element = document.querySelector<HTMLDivElement>('.level-info');
         const levelInfoLayout = `
             <h2 class='table__doThis'>${this.levelsData[levelNumber - 1].doThis}</h2>

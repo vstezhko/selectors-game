@@ -7,16 +7,14 @@ import { levelsData } from '../../../model/levelsData';
 
 export class MarkupPane {
     private storage = DataStorage.getInstance();
-    private readonly levelsData: ILevelData[];
+    private levelsData: ILevelData[];
 
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
-        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(level));
+        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(level as number));
     }
 
     public draw(level: number): void {
-        console.log('MarkupPane');
-
         const markupPaneContainer: Element = document.querySelector<HTMLDivElement>('.markup-pane');
         // const innerMarkup = transformToGameMarkup(['<plate>', '<apple />', '</plate>', '<plate />']);
         const innerMarkup = transformToGameMarkup(levelsData[level - 1].boardMarkup);

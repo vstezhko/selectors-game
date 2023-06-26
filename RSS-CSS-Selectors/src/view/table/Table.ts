@@ -10,7 +10,7 @@ export class Table {
     private readonly table: Element;
 
     constructor(levelsData: ILevelData[]) {
-        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(level));
+        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(level as number));
         this.levelsData = levelsData;
         this.table = document.querySelector('.table');
     }

@@ -8,7 +8,7 @@ export class Levels {
     private storage = DataStorage.getInstance();
     private levelsListContainer: Element;
     private readonly levelsData: ILevelData[];
-    private readonly completedLevels: CompletedLevels;
+    private completedLevels: CompletedLevels;
     private currentLevel: number;
 
     constructor(levelsData: ILevelData[]) {
@@ -16,10 +16,13 @@ export class Levels {
         this.completedLevels = this.storage.getValue(StorageGameDataNames.COMPLETED) as CompletedLevels;
         this.currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
         this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => {
-            this.renderLevels(level);
-            this.currentLevel = level;
+            this.currentLevel = level as number;
+            this.renderLevels(this.currentLevel);
         });
-        this.storage.subscribe(StorageGameDataNames.COMPLETED, () => this.renderLevels(this.currentLevel));
+        this.storage.subscribe(StorageGameDataNames.COMPLETED, (completedLevels) => {
+            this.completedLevels = completedLevels as CompletedLevels;
+            this.renderLevels(this.currentLevel);
+        });
         this.levelsListContainer = null;
     }
 
@@ -55,6 +58,7 @@ export class Levels {
         }
 
         this.levelsListContainer = document.querySelector('.levels__list');
+        const resetBtn = document.querySelector('.reset-progress');
 
         if (this.levelsListContainer instanceof HTMLElement && !!this.levelsListContainer) {
             this.levelsListContainer.addEventListener('click', (e: Event) => {
@@ -69,6 +73,11 @@ export class Levels {
                 }
             });
         }
+
+        resetBtn &&
+            resetBtn.addEventListener('click', () => {
+                this.storage.resetGameProgress();
+            });
     }
 
     renderLevels(currentLevel: number) {

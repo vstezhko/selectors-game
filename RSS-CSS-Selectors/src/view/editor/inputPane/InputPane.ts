@@ -16,7 +16,7 @@ export class InputPane {
         this.input = null;
         this.btn = null;
         this.hint = StorageCompletedNames.SELF;
-        this.storage.subscribe(StorageGameDataNames.HINT, (level) => this.setHintValue(level));
+        this.storage.subscribe(StorageGameDataNames.HINT, (level) => this.setHintValue(level as number));
         this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, () => this.clearInput());
     }
 

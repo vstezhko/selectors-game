@@ -14,11 +14,11 @@ export class Rules {
         this.completedLevels = this.storage.getValue(StorageGameDataNames.COMPLETED) as CompletedLevels;
         this.currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
         this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => {
-            this.currentLevel = level;
+            this.currentLevel = level as number;
             this.draw(this.currentLevel);
         });
-        this.storage.subscribe(StorageGameDataNames.COMPLETED, () => {
-            this.currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
+        this.storage.subscribe(StorageGameDataNames.COMPLETED, (completedLevels) => {
+            this.completedLevels = completedLevels as CompletedLevels;
             this.draw(this.currentLevel);
         });
     }

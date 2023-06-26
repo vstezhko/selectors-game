@@ -2,7 +2,6 @@ import { Element } from '../../types/type';
 
 export class Header {
     public draw(): void {
-        console.log('header');
         const headerContainer: Element = document.querySelector<HTMLDivElement>('header');
         const headerLayout = `
         <div class='logo'>

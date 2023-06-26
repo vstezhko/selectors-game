@@ -2,7 +2,6 @@ import { Element } from '../../types/type';
 
 export class Footer {
     public draw(): void {
-        console.log('footer');
         const footerContainer: Element = document.querySelector<HTMLDivElement>('footer');
         const footerLayout = `
         <a class='logo-img' href='https://rs.school/'>
