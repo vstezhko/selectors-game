@@ -25,7 +25,7 @@ export class AppView {
     private readonly startLevel;
 
     constructor() {
-        this.startLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL);
+        this.startLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
         this.header = new Header();
         this.footer = new Footer();
         this.levels = new Levels(levelsData);
@@ -39,12 +39,12 @@ export class AppView {
     public drawHeader(): void {
         this.header.draw();
         this.footer.draw();
-        this.levels.draw(1);
+        this.levels.draw(this.startLevel);
         this.inputPane.draw();
-        this.markupPane.draw(1);
-        this.table.draw(1);
-        this.levelInfo.draw(1);
-        this.rules.draw(levelsData[0]);
+        this.markupPane.draw(this.startLevel);
+        this.table.draw(this.startLevel);
+        this.levelInfo.draw(this.startLevel);
+        this.rules.draw(levelsData[this.startLevel - 1]);
     }
 
     public drawBurgerBtn(): void {

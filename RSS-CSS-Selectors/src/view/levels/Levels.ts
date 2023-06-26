@@ -13,8 +13,8 @@ export class Levels {
 
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
-        this.completedLevels = this.storage.getValue(StorageGameDataNames.COMPLETED);
-        this.currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL);
+        this.completedLevels = this.storage.getValue(StorageGameDataNames.COMPLETED) as CompletedLevels;
+        this.currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
         this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => {
             this.renderLevels(level);
             this.currentLevel = level;

@@ -87,7 +87,7 @@ export class InputPane {
     }
 
     handleSubmitSolution(input: Input, levelsData = this.levelsData) {
-        const currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL);
+        const currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
         if (input) {
             const res = validateSolution(input.value, levelsData[currentLevel - 1].answer);
             input.value = '';

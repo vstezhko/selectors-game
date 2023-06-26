@@ -1,4 +1,3 @@
-import { StorageCompletedNames } from './enum';
 import { CompletedLevels } from './type';
 
 export interface ILevelData {
