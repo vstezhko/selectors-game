@@ -44,7 +44,7 @@ export class AppView {
         this.markupPane.draw(this.startLevel);
         this.table.draw(this.startLevel);
         this.levelInfo.draw(this.startLevel);
-        this.rules.draw(levelsData[this.startLevel - 1]);
+        this.rules.draw(this.startLevel);
     }
 
     public drawBurgerBtn(): void {

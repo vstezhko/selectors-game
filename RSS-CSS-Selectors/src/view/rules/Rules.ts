@@ -1,22 +1,37 @@
 import { ILevelData } from '../../types/interface';
-import { Element } from '../../types/type';
+import { CompletedLevels, Element } from '../../types/type';
 import DataStorage from '../../data-storage/DataStorage';
 import { StorageGameDataNames } from '../../types/enum';
 
 export class Rules {
     private storage = DataStorage.getInstance();
     private readonly levelsData: ILevelData[];
+    private completedLevels: CompletedLevels;
+    private currentLevel: number;
 
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
-        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => this.draw(this.levelsData[level - 1]));
+        this.completedLevels = this.storage.getValue(StorageGameDataNames.COMPLETED) as CompletedLevels;
+        this.currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
+        this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, (level) => {
+            this.currentLevel = level;
+            this.draw(this.currentLevel);
+        });
+        this.storage.subscribe(StorageGameDataNames.COMPLETED, () => {
+            this.currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
+            this.draw(this.currentLevel);
+        });
     }
 
-    public draw(level: ILevelData): void {
+    public draw(currentLevel: number): void {
         const rulesContainer: Element = document.querySelector('.rules');
         const rulesLayout = `
-            <h2 class='rules__header'>
-                <span class='rules__text'>Level ${level.levelNumber} of 10</span>
+            <h2 class='rules__header ${
+                this.completedLevels.has(this.currentLevel)
+                    ? 'rules__header_completed-' + this.completedLevels.get(this.currentLevel)
+                    : ''
+            }'>
+                <span class='rules__text'>Level ${this.levelsData[currentLevel - 1].levelNumber} of 10</span>
                 <span class='checkmark'></span>
             </h2>
             <div class='level-nav'>
@@ -24,13 +39,13 @@ export class Rules {
                 <a class='next'></a>
             </div>
             <div class='rules__content'>
-                <h4 class='selector-name'>${level.selectorName}</h4>
-                <h3 class='title'>${level.title}</h3>
-                <h4 class='syntax'>${level.syntax}</h4>
-                <div class='hint'>${level.hint}</div>
+                <h4 class='selector-name'>${this.levelsData[currentLevel - 1].selectorName}</h4>
+                <h3 class='title'>${this.levelsData[currentLevel - 1].title}</h3>
+                <h4 class='syntax'>${this.levelsData[currentLevel - 1].syntax}</h4>
+                <div class='hint'>${this.levelsData[currentLevel - 1].hint}</div>
                 <h5 class='examples-title'>Examples</h5>
                 <div class='examples'>
-                    ${level.examples
+                    ${this.levelsData[currentLevel - 1].examples
                         .map(
                             (ex) => `<div class='example'>
                         ${ex}
@@ -51,12 +66,15 @@ export class Rules {
         [prev, next].forEach((btn) => {
             if (btn) {
                 btn.addEventListener('click', () => {
-                    if (btn.classList.contains('next') && level.levelNumber < this.levelsData.length) {
-                        this.storage.setCurrentLevel(level.levelNumber + 1);
+                    if (
+                        btn.classList.contains('next') &&
+                        this.levelsData[currentLevel - 1].levelNumber < this.levelsData.length
+                    ) {
+                        this.storage.setCurrentLevel(this.levelsData[currentLevel - 1].levelNumber + 1);
                     }
 
-                    if (btn.classList.contains('prev') && level.levelNumber > 1) {
-                        this.storage.setCurrentLevel(level.levelNumber - 1);
+                    if (btn.classList.contains('prev') && this.levelsData[currentLevel - 1].levelNumber > 1) {
+                        this.storage.setCurrentLevel(this.levelsData[currentLevel - 1].levelNumber - 1);
                     }
                 });
             }

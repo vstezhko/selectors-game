@@ -22,9 +22,15 @@
     transform: rotate(40deg);
   }
 
-  &_completed .checkmark {
+  &_completed-self .checkmark {
     opacity: .7;
     border: solid #4cbb4a;
+    border-width: 0 0.4rem 0.4rem 0;
+  }
+
+  &_completed-hint .checkmark {
+    opacity: .7;
+    border: solid #efff40;
     border-width: 0 0.4rem 0.4rem 0;
   }
 }
