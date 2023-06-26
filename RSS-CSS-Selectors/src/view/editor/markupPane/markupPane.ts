@@ -16,7 +16,6 @@ export class MarkupPane {
 
     public draw(level: number): void {
         const markupPaneContainer: Element = document.querySelector<HTMLDivElement>('.markup-pane');
-        // const innerMarkup = transformToGameMarkup(['<plate>', '<apple />', '</plate>', '<plate />']);
         const innerMarkup = transformToGameMarkup(levelsData[level - 1].boardMarkup);
         const markupPaneLayout = `
             <div class='pane-header'>
