@@ -79,7 +79,8 @@ export class InputPane {
 
         if (this.btn) {
             this.btn.addEventListener('click', () => {
-                this.input && this.input.value && this.handleSubmitSolution(this.input);
+                this.btn && this.pressSubmitBtn(this.btn);
+                this.input && this.handleSubmitSolution(this.input);
             });
 
             document.addEventListener('keydown', this.keyDownListener);
@@ -127,7 +128,15 @@ export class InputPane {
 
     keyDownListener = (e: KeyboardEvent) => {
         if (e.key === 'Enter') {
+            this.btn && this.pressSubmitBtn(this.btn);
             this.input && this.handleSubmitSolution(this.input);
         }
+    };
+
+    pressSubmitBtn = (btn: HTMLButtonElement) => {
+        btn.classList.add('enterhit');
+        btn.addEventListener('animationend', () => {
+            btn.classList.remove('enterhit');
+        });
     };
 }
