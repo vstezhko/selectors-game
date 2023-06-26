@@ -127,7 +127,7 @@ export class InputPane {
 
     keyDownListener = (e: KeyboardEvent) => {
         if (e.key === 'Enter') {
-            this.input && this.input.value && this.handleSubmitSolution(this.input);
+            this.input && this.handleSubmitSolution(this.input);
         }
     };
 }
