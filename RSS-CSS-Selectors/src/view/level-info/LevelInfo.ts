@@ -16,17 +16,21 @@ export class LevelInfo {
         const levelInfoContainer: Element = document.querySelector<HTMLDivElement>('.level-info');
         const levelInfoLayout = `
             <h2 class='table__doThis'>${this.levelsData[levelNumber - 1].doThis}</h2>
-            <p class='table__note-toggle'>Help, I'm stuck!</p>
+            <div class='table__note'>
+                <p class='table__toggle'>Help, I'm stuck!</p>
+            </div>
+           
         `;
 
         if (levelInfoContainer) {
             levelInfoContainer.innerHTML = levelInfoLayout;
         }
 
-        const helpBtn = document.querySelector('.table__note-toggle');
+        const helpBtn = document.querySelector('.table__toggle');
         if (helpBtn) {
             helpBtn.addEventListener('click', () => {
                 this.storage.setHintLevel(levelNumber);
+                helpBtn.classList.add('table__toggle_hidden');
             });
         }
     }

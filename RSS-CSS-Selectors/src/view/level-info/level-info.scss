@@ -13,7 +13,11 @@
     padding: 2rem 3rem;
   }
 
-  .table__note-toggle {
+  .table__note {
+    height: 35px;
+  }
+
+  .table__toggle {
     background: rgba(0,0,0,.2);
     color: rgba(255,255,255,.3);
     padding: 8px 15px 10px 15px;
@@ -24,6 +28,10 @@
     &:hover {
       text-decoration: underline;
       color: rgba(255,255,255,.4);
+    }
+
+    &_hidden {
+      display: none;
     }
   }
 }
