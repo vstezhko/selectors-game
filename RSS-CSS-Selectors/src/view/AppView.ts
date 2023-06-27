@@ -11,6 +11,7 @@ import DataStorage from '../data-storage/DataStorage';
 import { StorageGameDataNames } from '../types/enum';
 import { BurgerBtn } from './burgerBtn/BurgerBtn';
 import { Element } from '../types/type';
+import { HoverElementsWatcher } from './hoverElementsWatcher/HoverElementsWatcher';
 
 export class AppView {
     private readonly header;
@@ -23,6 +24,7 @@ export class AppView {
     private readonly levelInfo;
     private storage = DataStorage.getInstance();
     private readonly startLevel;
+    private readonly hoverElementsWatcher;
 
     constructor() {
         this.startLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
@@ -34,6 +36,7 @@ export class AppView {
         this.markupPane = new MarkupPane(levelsData);
         this.table = new Table(levelsData);
         this.levelInfo = new LevelInfo(levelsData);
+        this.hoverElementsWatcher = new HoverElementsWatcher();
     }
 
     public drawHeader(): void {

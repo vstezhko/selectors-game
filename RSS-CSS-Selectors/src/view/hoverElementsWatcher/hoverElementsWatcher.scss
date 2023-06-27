@@ -1,0 +1,22 @@
+.table-area .table-container .table {
+
+  plate,
+  bento,
+  apple {
+
+    &[data-hovered="true"] {
+      box-shadow: 0 0 15px 10px #82a4f3;
+    }
+
+  }
+}
+
+.table-div {
+  *[data-hovered="true"] {
+    color: rgba(154, 185, 252, 0.78);
+
+    * {
+      color: rgba(154, 185, 252, 0.78);
+    }
+  }
+}
