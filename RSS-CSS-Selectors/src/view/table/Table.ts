@@ -23,7 +23,7 @@ export class Table {
             descendants &&
                 descendants.forEach((node, index) => {
                     if (node instanceof HTMLElement) {
-                        node.dataset.id = index.toString();
+                        node.dataset.gameId = index.toString();
                     }
                 });
             document.querySelectorAll(levelsData[currentLevel - 1].selector).forEach((node) => {

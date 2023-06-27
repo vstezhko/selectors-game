@@ -46,7 +46,7 @@ export class MarkupPane {
             descendants &&
                 descendants.forEach((node, index) => {
                     if (node instanceof HTMLDivElement) {
-                        node.dataset.id = index.toString();
+                        node.dataset.gameId = index.toString();
                     }
                 });
         }

@@ -12,23 +12,23 @@ export class HoverElementsWatcher {
         if (this.table && this.markupPane) {
             this.table.addEventListener('mouseover', (e: MouseEvent) => {
                 if (e.target instanceof HTMLElement) {
-                    e.target.dataset.id && this.hoverElements(e.target.dataset.id);
+                    e.target.dataset.gameId && this.hoverElements(e.target.dataset.gameId);
                 }
             });
             this.table.addEventListener('mouseout', (e: MouseEvent) => {
                 if (e.target instanceof HTMLElement) {
-                    e.target.dataset.id && this.unHoverElements(e.target.dataset.id);
+                    e.target.dataset.gameId && this.unHoverElements(e.target.dataset.gameId);
                 }
             });
 
             this.markupPane.addEventListener('mouseover', (e: MouseEvent) => {
                 if (e.target instanceof HTMLElement) {
-                    e.target.dataset.id && this.hoverElements(e.target.dataset.id);
+                    e.target.dataset.gameId && this.hoverElements(e.target.dataset.gameId);
                 }
             });
             this.markupPane.addEventListener('mouseout', (e: MouseEvent) => {
                 if (e.target instanceof HTMLElement) {
-                    e.target.dataset.id && this.unHoverElements(e.target.dataset.id);
+                    e.target.dataset.gameId && this.unHoverElements(e.target.dataset.gameId);
                 }
             });
         }
@@ -46,7 +46,7 @@ export class HoverElementsWatcher {
         const allElements = this.gatherElements();
         allElements &&
             allElements.forEach((el) => {
-                if (el.dataset.id === id) {
+                if (el.dataset.gameId === id) {
                     el.dataset.hovered = 'true';
                 }
             });
@@ -56,7 +56,7 @@ export class HoverElementsWatcher {
         const allElements = this.gatherElements();
         allElements &&
             allElements.forEach((el) => {
-                if (el.dataset.id === id) {
+                if (el.dataset.gameId === id) {
                     delete el.dataset.hovered;
                 }
             });

@@ -1,6 +1,6 @@
 .table-area {
-  transform: translate3d(0, 0, 0);
-  perspective: 400px;
+  /* transform: translate3d(0, 0, 0); */
+  perspective: 300px;
   text-align: center;
   position: relative;
   padding-top: 15px;
@@ -10,7 +10,7 @@
     transform: rotateX(20deg);
     min-height: 142px;
     transform-origin: bottom;
-    z-index: 9999;
+    z-index: 9;
     position: relative;
     margin: 10px auto 0 auto;
     width: fit-content;
@@ -18,7 +18,7 @@
     .table-surface {
       box-shadow: 0 4rem 1rem rgba(0, 0, 0, .2);
       background: #dd992d;
-      background: linear-gradient(#dd992d, #cd8c26);
+      background: linear-gradient(#753921, #cd8c26);
       position: absolute;
       height: 100%;
       bottom: 0;
@@ -26,15 +26,15 @@
     }
 
     .table {
-      transform-style: preserve-3d;
-      outline: solid 1px transparent;
+      /* transform-style: preserve-3d; */
+      /* outline: solid 1px transparent; */
       margin: 0 auto;
-      min-height: 142px;
-      padding: 15px 15px 22px 15px;
+      min-height: 1.4rem;
+      padding: 1rem 2rem 1.5rem 2rem;
       display: inline-block;
-      z-index: 999;
+      z-index: 10;
       position: relative;
-      white-space: nowrap;
+      //white-space: nowrap;
     }
 
 
@@ -95,6 +95,7 @@
         left: calc(50% - 30px);
         margin: 0;
         position: absolute;
+        z-index: 11;
 
         &:last-child {
           top: calc(50% - 35px);
@@ -135,7 +136,6 @@
     orange, apple, pickle {
       box-shadow: 0 0.5rem 0 rgba(0, 0, 0, .2);
       display: inline-block;
-      //margin: 0 1rem;
       height: 6rem;
     }
 
