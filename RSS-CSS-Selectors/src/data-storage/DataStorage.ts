@@ -2,6 +2,7 @@ import { generateStartData } from '../model/startStorageData';
 import { StorageCompletedNames, StorageGameDataNames } from '../types/enum';
 import { ITemplateStartData } from '../types/interface';
 import { CompletedLevels } from '../types/type';
+import { levelsData } from '../model/levelsData';
 
 export default class DataStorage {
     private static instanceDataStorage = new DataStorage();
@@ -30,15 +31,24 @@ export default class DataStorage {
     saveGameData() {
         const completed = this.gameData[StorageGameDataNames.COMPLETED];
         const currLevel = this.gameData[StorageGameDataNames.CURRENT_LEVEL];
+        const win = this.gameData[StorageGameDataNames.WIN];
 
         localStorage.setItem(StorageGameDataNames.COMPLETED, JSON.stringify(Array.from(completed)));
         localStorage.setItem(StorageGameDataNames.CURRENT_LEVEL, JSON.stringify(currLevel));
+        localStorage.setItem(StorageGameDataNames.WIN, JSON.stringify(win));
     }
 
     setCompletedLevel(value: number, completedType: StorageCompletedNames) {
         const completedMap = this.gameData[StorageGameDataNames.COMPLETED];
         completedMap.set(value, completedType);
         this.gameData[StorageGameDataNames.COMPLETED] = completedMap;
+        if (this.gameData[StorageGameDataNames.COMPLETED].size === levelsData.length) {
+            this.gameData[StorageGameDataNames.WIN] = true;
+            this.notify(StorageGameDataNames.COMPLETED, this.gameData[StorageGameDataNames.COMPLETED]);
+            this.notify(StorageGameDataNames.WIN, this.gameData[StorageGameDataNames.COMPLETED]);
+            this.saveGameData();
+            return;
+        }
         this.notify(StorageGameDataNames.COMPLETED, this.gameData[StorageGameDataNames.COMPLETED]);
         this.saveGameData();
     }
@@ -59,12 +69,14 @@ export default class DataStorage {
     getGameDataFromLS(): ITemplateStartData | null {
         const lsDataCompleted = localStorage.getItem(StorageGameDataNames.COMPLETED);
         const lsDataCurrentLevel = localStorage.getItem(StorageGameDataNames.CURRENT_LEVEL);
+        const lsDataWin = localStorage.getItem(StorageGameDataNames.WIN);
 
-        if (lsDataCompleted && lsDataCurrentLevel) {
+        if (lsDataCompleted && lsDataCurrentLevel && lsDataWin) {
             return {
                 [StorageGameDataNames.HINT]: null,
                 [StorageGameDataNames.CURRENT_LEVEL]: Number(JSON.parse(lsDataCurrentLevel)),
                 [StorageGameDataNames.COMPLETED]: new Map<number, StorageCompletedNames>(JSON.parse(lsDataCompleted)),
+                [StorageGameDataNames.WIN]: JSON.parse(lsDataWin),
             };
         } else {
             return null;

@@ -18,4 +18,5 @@ export interface ITemplateStartData {
     hint: null | number;
     currentLevel: number;
     completed: CompletedLevels;
+    win: boolean;
 }

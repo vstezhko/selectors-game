@@ -5,6 +5,7 @@ export const generateStartData = (): ITemplateStartData => {
         hint: null,
         currentLevel: 1,
         completed: new Map(),
+        win: false,
     };
     return Object.assign(template);
 };

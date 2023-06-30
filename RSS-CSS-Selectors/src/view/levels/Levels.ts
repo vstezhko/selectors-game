@@ -11,7 +11,6 @@ export class Levels {
     private completedLevels: CompletedLevels;
     private currentLevel: number;
 
-
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
         this.completedLevels = this.storage.getValue(StorageGameDataNames.COMPLETED) as CompletedLevels;
@@ -24,7 +23,20 @@ export class Levels {
             this.completedLevels = completedLevels as CompletedLevels;
             this.renderLevels(this.currentLevel);
         });
+
+        this.storage.subscribe(StorageGameDataNames.WIN, () => {
+            this.showWinMessage();
+        });
         this.levelsListContainer = null;
+    }
+
+    private showWinMessage() {
+        const winMessage = document.createElement('div');
+        winMessage.textContent = 'You are win!!!';
+        winMessage.classList.add('win');
+        this.levelsListContainer && this.levelsListContainer.append(winMessage);
+        const burgerBtn = BurgerBtn.getInstance();
+        burgerBtn.toggleBtnLevels();
     }
 
     private generateLevelsListLayout(currentLevel: number) {
