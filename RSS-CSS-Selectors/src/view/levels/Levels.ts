@@ -11,6 +11,7 @@ export class Levels {
     private completedLevels: CompletedLevels;
     private currentLevel: number;
 
+
     constructor(levelsData: ILevelData[]) {
         this.levelsData = levelsData;
         this.completedLevels = this.storage.getValue(StorageGameDataNames.COMPLETED) as CompletedLevels;

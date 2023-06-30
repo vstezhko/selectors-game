@@ -6,8 +6,10 @@ export class BurgerBtn {
     private readonly BtnLayoutRules: Node & Element;
     private readonly levelsContainer: Element;
     private readonly rulesContainer: Element;
+    private readonly body: Element;
 
     constructor() {
+        this.body = document.querySelector('body');
         this.levelsContainer = document.querySelector<HTMLDivElement>('.levels');
         this.rulesContainer = document.querySelector<HTMLDivElement>('.rules');
         this.BtnLayoutLevels = document.createElement('div');
@@ -33,6 +35,7 @@ export class BurgerBtn {
 
     toggleBtnLevels() {
         if (this.BtnLayoutLevels && this.levelsContainer) {
+            this.body && this.body.classList.toggle('body_withPopup');
             this.BtnLayoutLevels.classList.toggle('menu_active');
             this.levelsContainer.classList.toggle('levels_opened');
         }

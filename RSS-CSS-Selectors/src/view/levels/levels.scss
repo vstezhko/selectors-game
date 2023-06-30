@@ -4,13 +4,13 @@
     display: none;
     background: linear-gradient(to right, #010228, #363b00);
     opacity: 0.9;
-    filter: blur(0.5rem);
     position: absolute;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
     z-index: 2;
+    overflow: hidden;
   }
 
   .popup {
