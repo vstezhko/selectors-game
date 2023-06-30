@@ -20,33 +20,54 @@ html {
 
 body {
   background: #2e2a23;
-  height: 100vh;
   font-family: "Exo 2", "Lato", "Helvetica Neue", sans-serif;
   color: rgba(255, 255, 255, .7);
   font-size: 1.4rem;
-  overflow: hidden;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrapper {
   display: flex;
-  height: 100%;
   overflow: hidden;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .main {
-  overflow-y: auto;
+  //overflow-y: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-grow: 1;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
 }
 
-.aside {
-  flex-shrink: 0;
-  position: sticky;
-  width: 35rem;
-  top: 0;
-  right: 0;
-  background: #221e18;
-  height: 100%;
+@media (min-width: 1000px) {
+  .game {
+    width: auto;
+  }
 }
+
+//.aside {
+//  flex-shrink: 0;
+//  position: sticky;
+//  width: 35rem;
+//  top: 0;
+//  right: 0;
+//  background: #221e18;
+//  height: 100%;
+//}
 
 .footer {
   grid-area: footer;

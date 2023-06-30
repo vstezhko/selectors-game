@@ -47,11 +47,16 @@ export class Levels {
     public draw(currentLevel: number): void {
         const levelsContainer: Element = document.querySelector<HTMLDivElement>('.levels');
         const levelsLayout = `
-            <h2>Levels</h2>
-            <div class='levels__list'>
-                ${this.generateLevelsListLayout(currentLevel)}
+            <div class='background'></div>
+            <div class='popup'>
+                <h2>Levels</h2>
+                <div class='levels__list'>
+                    ${this.generateLevelsListLayout(currentLevel)}
+                </div>
+                <a class='reset-progress' href='#'>Reset Progress</a>
             </div>
-            <a class='reset-progress' href='#'>Reset Progress</a>
+
+
         `;
         if (levelsContainer) {
             levelsContainer.innerHTML += levelsLayout;
@@ -59,6 +64,8 @@ export class Levels {
 
         this.levelsListContainer = document.querySelector('.levels__list');
         const resetBtn = document.querySelector('.reset-progress');
+        const levelsBackground = document.querySelector('.background');
+        const burgerBtn = BurgerBtn.getInstance();
 
         if (this.levelsListContainer instanceof HTMLElement && !!this.levelsListContainer) {
             this.levelsListContainer.addEventListener('click', (e: Event) => {
@@ -67,8 +74,7 @@ export class Levels {
                         const level: number = +e.target.dataset.id;
                         this.storage.setCurrentLevel(level);
 
-                        const burgerBtn = BurgerBtn.getInstance();
-                        burgerBtn.toggleBtn();
+                        burgerBtn.toggleBtnLevels();
                     }
                 }
             });
@@ -77,6 +83,12 @@ export class Levels {
         resetBtn &&
             resetBtn.addEventListener('click', () => {
                 this.storage.resetGameProgress();
+                burgerBtn.toggleBtnLevels();
+            });
+
+        levelsBackground &&
+            levelsBackground.addEventListener('click', () => {
+                burgerBtn.toggleBtnLevels();
             });
     }
 

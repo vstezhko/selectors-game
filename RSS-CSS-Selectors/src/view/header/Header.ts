@@ -7,6 +7,7 @@ export class Header {
         <div class='logo'>
             <h1>Selectors Game</h1>
         </div>
+        <div class='menu-container'></div>
         `;
 
         if (headerContainer) {

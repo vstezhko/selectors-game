@@ -1,4 +1,6 @@
 .input-pane {
+  width: 100%;
+
   .input-pane__input {
     font-family: menlo, monospace;
     color: #333;
@@ -35,7 +37,7 @@
     font-size: 0.9rem;
     cursor: pointer;
     top: 0.7rem;
-    z-index: 10;
+    z-index: 1;
   }
 
   .enterhit {

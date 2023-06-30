@@ -52,7 +52,7 @@ export class AppView {
 
     public drawBurgerBtn(): void {
         const btn = BurgerBtn.getInstance();
-        const asideContainer: Element = document.querySelector('.aside');
-        btn.draw(asideContainer);
+        const menu: Element = document.querySelector('.menu-container');
+        btn.draw(menu);
     }
 }

@@ -1,28 +1,54 @@
 .levels {
-  background: #221e18;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 0;
-  position: absolute;
-  height: 100vh;
-  top: 0;
-  right: -100%;
-  width: 100%;
-  overflow: auto;
-  transition: all 0.3s;
+
+  .background {
+    display: none;
+    background: linear-gradient(to right, #010228, #363b00);
+    opacity: 0.9;
+    filter: blur(0.5rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+  }
+
+  .popup {
+    background: #262427;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0;
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 30rem;
+    overflow: auto;
+    transition: all 0.3s;
+    z-index: 9;
+
+    h2 {
+      font-size: 2.2rem;
+      color: white;
+      opacity: .4;
+      font-weight: normal;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+  }
 
   &_opened {
-    right: 0;
+    .background {
+      display: block;
+    }
+
+    .popup {
+      right: 0;
+    }
   }
 
-  h2 {
-    font-size: 2.2rem;
-    color: white;
-    opacity: .4;
-    font-weight: normal;
-    margin: 0;
-    padding-left: 1.5rem;
-  }
+
 }
 
 .levels__list {
@@ -73,7 +99,7 @@
   &_current {
     font-weight: bold;
     color: #AAA;
-    background: rgba(255, 255, 255, .07);
+    background: rgb(196 219 5 / 14%);;
   }
 }
 

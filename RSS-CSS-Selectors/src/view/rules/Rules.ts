@@ -24,7 +24,7 @@ export class Rules {
     }
 
     public draw(currentLevel: number): void {
-        const rulesContainer: Element = document.querySelector('.rules');
+        const rulesContainer: NodeList = document.querySelectorAll('.rules');
         const rulesLayout = `
             <h2 class='rules__header ${
                 this.completedLevels.has(this.currentLevel)
@@ -38,6 +38,7 @@ export class Rules {
                 <a class='prev'></a>
                 <a class='next'></a>
             </div>
+
             <div class='rules__content'>
                 <h4 class='selector-name'>${this.levelsData[currentLevel - 1].selectorName}</h4>
                 <h3 class='title'>${this.levelsData[currentLevel - 1].title}</h3>
@@ -56,15 +57,30 @@ export class Rules {
             </div>
         `;
 
-        if (rulesContainer) {
-            rulesContainer.innerHTML = rulesLayout;
+        if (rulesContainer.length) {
+            rulesContainer.forEach((item) => {
+                if (item instanceof HTMLElement) {
+                    item.innerHTML = rulesLayout;
+                }
+            });
         }
 
-        const prev = document.querySelector('.prev');
-        const next = document.querySelector('.next');
+        const openBtn: Element = document.querySelector('.rules__header');
+        openBtn &&
+            openBtn.addEventListener('click', () => {
+                openBtn.classList.toggle('rules__header_opened');
+                rulesContainer.forEach((i) => {
+                    if (i instanceof HTMLElement) {
+                        i.classList.toggle('rules_opened');
+                    }
+                });
+            });
 
-        [prev, next].forEach((btn) => {
-            if (btn) {
+        const prev: NodeList = document.querySelectorAll('.prev');
+        const next: NodeList = document.querySelectorAll('.next');
+
+        [...prev, ...next].forEach((btn) => {
+            if (btn instanceof HTMLElement) {
                 btn.addEventListener('click', () => {
                     if (
                         btn.classList.contains('next') &&

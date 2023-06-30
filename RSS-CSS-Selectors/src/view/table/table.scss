@@ -1,10 +1,13 @@
 .table-area {
-  /* transform: translate3d(0, 0, 0); */
   perspective: 300px;
   text-align: center;
   position: relative;
   padding-top: 15px;
-  margin-bottom: 50px;
+  margin: 0 auto 3rem;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   .table-container {
     transform: rotateX(20deg);
@@ -18,7 +21,7 @@
     .table-surface {
       box-shadow: 0 4rem 1rem rgba(0, 0, 0, .2);
       background: #dd992d;
-      background: linear-gradient(#753921, #cd8c26);
+      background: linear-gradient(#753921, #3b3185);
       position: absolute;
       height: 100%;
       bottom: 0;
@@ -166,7 +169,7 @@
       border-color: #ab1212;
     }
 
-    orange{
+    orange {
       background: orange;
       border-color: #bd6e07;
     }
@@ -180,33 +183,70 @@
 
   @keyframes strobeStart {
     0% {
-      transform:  skew(0deg,0deg) scaleY(1) ;
+      transform: skew(0deg, 0deg) scaleY(1);
       animation-timing-function: ease-in;
     }
     40% {
-      transform:  skew(0deg,0deg) scaleY(.9);
+      transform: skew(0deg, 0deg) scaleY(.9);
       animation-timing-function: ease-out;
     }
-    100% { transform:   skew(4deg,0deg) scaleX(1); }
+    100% {
+      transform: skew(4deg, 0deg) scaleX(1);
+    }
   }
 
   @keyframes strobe {
-    0% { transform:   skew(4deg,0deg) scaleX(1); }
-    10% { transform:  skew(1deg,0deg) scaleY(.9) ; }
-    50% { transform:  skew(-4deg,0deg) scaleX(1); }
-    60% { transform:  skew(-1deg,0deg) scaleY(.9) ; }
-    100% {transform: skew(4deg,0deg) scaleX(1); }
+    0% {
+      transform: skew(4deg, 0deg) scaleX(1);
+    }
+    10% {
+      transform: skew(1deg, 0deg) scaleY(.9);
+    }
+    50% {
+      transform: skew(-4deg, 0deg) scaleX(1);
+    }
+    60% {
+      transform: skew(-1deg, 0deg) scaleY(.9);
+    }
+    100% {
+      transform: skew(4deg, 0deg) scaleX(1);
+    }
   }
 }
 
 .clean {
-  animation: cleanme .2s 1;
-  transform: translateY(-600px);
+  animation: cleanme .4s 1;
+  transform-origin: center center;
 }
 
 @keyframes cleanme {
-  0% {   transform: translateY(0px) rotate3d(0,0,0,0deg); }
-  100% { transform: translateY(-600px) rotate3d(0,0,0,0deg);}
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-200px) scale(2);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  .table-area {
+    margin: 0 1rem;
+    flex-grow: 2;
+  }
+
+  .table-container {
+    width: 80%;
+
+    & > * {
+      width: 100%;
+    }
+  }
 }
 
 

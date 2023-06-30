@@ -1,5 +1,4 @@
 import { StorageCompletedNames } from './enum';
-import { ITemplateStartData } from './interface';
 
 export type Element = HTMLElement | null;
 export type Input = HTMLInputElement | null;

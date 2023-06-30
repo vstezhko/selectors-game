@@ -1,13 +1,61 @@
 .rules {
-  background: #221e18;
   padding: 2rem;
-  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+
+  &_opened {
+    .rules__content {
+      height: 100%;
+    }
+  }
+}
+
+.content-rules {
+  display: none;
 }
 
 .rules__header {
   font-size: 2.5rem;
-  padding: 0 0 1rem 0;
+  padding: 0 0 1rem 3rem;
+  position: relative;
   color: #777;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
+
+  &:before {
+    content: "";
+    height: 1.8rem;
+    width: 1.8rem;
+    left: 0.3rem;
+    top: 0.2rem;
+    position: absolute;
+    opacity: 0.6;
+    border: solid white;
+    border-width: 0.2rem 0.2rem 0 0;
+    transform-origin: center center;
+    box-sizing: border-box;
+    transform: rotate(-226deg);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  &_opened {
+    &:before {
+      top: 1.2rem;
+      transform: rotate(-47deg);
+    }
+  }
+
+  &:hover {
+    color: #ffed63;
+    &:before {
+      border: solid #ffed63;
+      border-width: 0.2rem 0.2rem 0 0;
+    }
+  }
 
   .checkmark {
     position: relative;
@@ -37,16 +85,20 @@
 
 .rules__content {
   font-size: 1.5rem;
-  margin: 3rem auto 0 auto;
+  margin: 0 auto;
   color: rgba(255, 255, 255, .6);
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
 
   strong {
     color: #AAA;
-    background: rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, .1);
     padding: 0.3rem 0.6rem 0.3rem 0.6rem;
     margin: 0 0.2rem;
     font-size: 1.3rem;
-    font-family: menlo,monospace;
+    font-family: menlo, monospace;
     font-weight: normal;
   }
 
@@ -117,7 +169,7 @@
 
 .level-nav {
   position: absolute;
-  right: 6rem;
+  right: 2rem;
   top: 2rem;
   line-height: 0;
 
@@ -130,6 +182,7 @@
     opacity: .25;
     cursor: pointer;
     user-select: none;
+    transition: all 0.3s;
 
     &:after {
       content: "";
@@ -144,7 +197,12 @@
     }
 
     &:hover {
-      opacity: .4;
+      opacity: 1;
+      &:after,
+      &:before {
+        border: solid rgba(222, 228, 133, 1);;
+        border-width: 0.2rem 0.2rem 0 0;
+      }
     }
   }
 
@@ -156,6 +214,33 @@
   .next:after {
     transform: rotate(45deg);
     left: 0.2rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .header-rules {
+    display: none;
+  }
+
+  .content-rules {
+    display: block;
+    min-width: 305px;
+    max-width: 400px;
+    width: min-content;
+    flex-grow: 2;
+  }
+
+  .rules__content {
+    height: 100%;
+  }
+
+  .rules__header {
+    padding: 1rem;
+    opacity: 0.9;
+
+    &:before {
+      display: none;
+    }
   }
 }
 

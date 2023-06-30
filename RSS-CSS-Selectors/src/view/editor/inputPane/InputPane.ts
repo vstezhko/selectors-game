@@ -61,12 +61,6 @@ export class InputPane {
                     /* Styles would go here. */<br>
                     }
                 </div>
-                <div class='help'>
-                    <br>
-                    /* <br>
-                    Type a number to skip to a level.<br>
-                    Ex → "5" for level 5 <br>*/
-                </div>
             </div>
         `;
 

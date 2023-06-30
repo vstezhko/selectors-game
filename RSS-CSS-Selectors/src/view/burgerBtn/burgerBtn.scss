@@ -1,44 +1,50 @@
 /// Burger
 
 %menu-line {
-  display: inline-block;
-  position: absolute;
-  content: '';
-  width: 100%;
+  width: 2.3rem;
   height: 2px;
+  right: 0;
   background: #777777;
+  content: '';
+  position: absolute;
 }
 
 .menu {
-  position: absolute;
-  top: 1.7rem;
-  right: 1.7rem;
-  width: 2.3rem;
-  height: 1.8rem;
-  transition: all ease-in 0.3s;
+  position: relative;
+  width: fit-content;
+  padding-right: 40px;
   cursor: pointer;
-  z-index: 10;
+  display: flex;
+  gap: 1rem;
 
-  &:before {
-    @extend %menu-line;
-    top: 0;
-  }
-
-  &:after {
-    @extend %menu-line;
-    bottom: 0;
-  }
 
   .menu-line {
     @extend %menu-line;
     top: calc(50% - 1px);
+    width: 2.3rem;
+    transition: all ease-in 0.3s;
+
+    &:before {
+      @extend %menu-line;
+      top: -10px;
+    }
+
+    &:after {
+      @extend %menu-line;
+      top: 10px;
+    }
   }
 
   &_active {
-    transform: rotate(90deg);
+    .menu-line {
 
-    &:after, &:before, .menu-line {
+      transform: rotate(90deg);
       background: #FFF;
+
+      &:after, &:before,{
+        background: #FFF;
+        transform-origin: center;
+      }
     }
   }
 }

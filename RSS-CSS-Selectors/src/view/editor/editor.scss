@@ -3,14 +3,15 @@
 
 .editor {
   position: relative;
-  text-align: left;
-  width: 90%;
-  margin: 0 auto;
-  border: solid 1rem rgba(0, 0, 0, .35);
-  border-radius: 0.4rem;
+  min-width: 400px;
+  width: fit-content;
+  margin: 0.5rem auto;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
 
   * {
     font-family: menlo, monospace;
@@ -18,14 +19,10 @@
     line-height: 150%;
   }
 
-  & > * {
-    width: 50%;
-  }
-
   .pane-header {
     text-align: left;
     padding: 10px 15px;
-    background: rgba(0, 0, 0, .15);
+    background: rgba(222, 228, 133, 0.74);
     border-top: solid 0.1rem rgba(255, 255, 255, .05);
     border-bottom: solid 0.1rem rgba(255, 255, 255, .05);
     border-radius: 0.2rem 0.2rem 0 0;
@@ -41,7 +38,7 @@
   .pane-window {
     padding: 1rem 1rem 1rem 4.6rem;
     position: relative;
-    min-height: 43.2rem;
+    //min-height: 43.2rem;
     background: rgba(0, 0, 0, .3);
 
     &_input-pane {
@@ -73,6 +70,7 @@
     text-align: right;
     color: #666;
     border-right: solid 0.1rem #333;
+    overflow: hidden;
   }
 
 }
@@ -87,4 +85,12 @@
   25% {  transform: translateX(-5px); }
   50% {  transform: translateX(0); }
   75% {  transform: translateX(5px); }
+}
+
+@media (min-width: 1000px) {
+  .editor {
+    min-width: auto;
+    margin: 0 1rem;
+    flex-grow: 1;
+  }
 }
