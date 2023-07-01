@@ -35,8 +35,6 @@ describe('BurgerBtn', () => {
         // Вызываем метод toggleBtnLevels
         burgerBtn.toggleBtnLevels();
 
-        console.log('dfdsfdfdfdf', bodyMock.classList.value);
-
         // Проверяем изменение классов элементов
         expect(bodyMock.classList.value).toContain('body_withPopup');
         expect(burgerBtn.BtnLayoutLevels.classList.value).toContain('menu_active');
