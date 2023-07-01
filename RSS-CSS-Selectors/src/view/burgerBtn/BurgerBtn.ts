@@ -2,18 +2,14 @@ import { Element } from '../../types/type';
 
 export class BurgerBtn {
     private static instanceBurgerBtn = new BurgerBtn();
-    private readonly BtnLayoutLevels: Node & Element;
-    private readonly BtnLayoutRules: Node & Element;
+    readonly BtnLayoutLevels: Node & Element;
     private readonly levelsContainer: Element;
-    private readonly rulesContainer: Element;
     private readonly body: Element;
 
     constructor() {
         this.body = document.querySelector('body');
         this.levelsContainer = document.querySelector<HTMLDivElement>('.levels');
-        this.rulesContainer = document.querySelector<HTMLDivElement>('.rules');
         this.BtnLayoutLevels = document.createElement('div');
-        this.BtnLayoutRules = document.createElement('div');
         this.BtnLayoutLevels.classList.add('menu');
         this.BtnLayoutLevels.innerHTML = `<div>Levels</div><div class='menu-line'></div>`;
 
