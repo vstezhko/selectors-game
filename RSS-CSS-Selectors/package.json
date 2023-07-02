@@ -1,5 +1,5 @@
 {
-    "name": "rss-css-Selectors",
+    "name": "rss-css-selectors",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -8,7 +8,7 @@
         "build": "webpack --config webpack.config.js --env mode=prod",
         "lint": "eslint . --ext .ts",
         "predeploy": "npm run build",
-        "deploy": "gh-pages -d RSS-CSS-Selectors",
+        "deploy": "gh-pages -d rss-css-selectors",
         "test": "jest --coverage"
     },
     "keywords": [],
