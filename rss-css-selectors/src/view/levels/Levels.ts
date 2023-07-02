@@ -31,7 +31,7 @@ export class Levels {
         this.levelsListContainer = null;
     }
 
-    private showWinMessage(): void {
+    showWinMessage(): void {
         const winMessage = document.createElement('div');
         winMessage.textContent = 'You are win!!!';
         winMessage.classList.add('win');
