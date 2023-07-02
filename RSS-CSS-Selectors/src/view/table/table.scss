@@ -123,6 +123,9 @@
         border-width: 1rem 0 0 0;
       }
 
+      &.blue {
+        background: #0074D9;
+      }
 
       apple,
       orange {
@@ -234,10 +237,11 @@
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1100px) {
   .table-area {
     margin: 0 1rem;
     flex-grow: 2;
+    width: 44rem;
   }
 
   .table-container {

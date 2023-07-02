@@ -24,6 +24,10 @@ export default class DataStorage {
 
     setCurrentLevel(value: number) {
         this.gameData[StorageGameDataNames.CURRENT_LEVEL] = value;
+        if (this.gameData[StorageGameDataNames.COMPLETED].size === levelsData.length) {
+            this.saveGameData();
+            return;
+        }
         this.notify(StorageGameDataNames.CURRENT_LEVEL, value);
         this.saveGameData();
     }
@@ -44,7 +48,7 @@ export default class DataStorage {
         this.gameData[StorageGameDataNames.COMPLETED] = completedMap;
         if (this.gameData[StorageGameDataNames.COMPLETED].size === levelsData.length) {
             this.gameData[StorageGameDataNames.WIN] = true;
-            this.notify(StorageGameDataNames.COMPLETED, this.gameData[StorageGameDataNames.COMPLETED]);
+            // this.notify(StorageGameDataNames.COMPLETED, this.gameData[StorageGameDataNames.COMPLETED]);
             this.notify(StorageGameDataNames.WIN, this.gameData[StorageGameDataNames.COMPLETED]);
             this.saveGameData();
             return;

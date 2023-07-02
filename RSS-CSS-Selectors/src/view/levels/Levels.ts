@@ -25,6 +25,7 @@ export class Levels {
         });
 
         this.storage.subscribe(StorageGameDataNames.WIN, () => {
+            this.renderLevels(this.currentLevel);
             this.showWinMessage();
         });
         this.levelsListContainer = null;
@@ -51,7 +52,7 @@ export class Levels {
                         ? 'checkmark_completed-' + this.completedLevels.get(level.levelNumber)
                         : ''
                 }'></span>
-                <span class='level-number'>${level.levelNumber}</span>${level.syntax}</a>
+                <span class='level-number'>${level.levelNumber} </span>${level.syntax}</a>
             `;
         });
         return generatedLevels;
@@ -96,6 +97,7 @@ export class Levels {
         resetBtn &&
             resetBtn.addEventListener('click', () => {
                 this.storage.resetGameProgress();
+                this.storage.setCurrentLevel(1);
                 burgerBtn.toggleBtnLevels();
             });
 

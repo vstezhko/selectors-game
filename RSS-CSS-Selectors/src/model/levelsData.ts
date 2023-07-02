@@ -11,7 +11,6 @@ export const levelsData: ILevelData[] = [
         hint: 'Selects all <strong>B</strong> inside of <strong>A</strong>. <strong>B</strong> is called a descendant because it is inside of another element.',
         examples: [
             '<strong>p&nbsp;&nbsp;strong</strong> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>',
-            '<strong>#fancy&nbsp;&nbsp;span</strong> selects any <tag>span</tag> elements that are inside of the element with <strong>id="fancy"</strong>',
         ],
         boardMarkup: ['<plate />', '<plate />'],
         realMarkup: `<plate></plate><plate></plate>`,
@@ -40,7 +39,6 @@ export const levelsData: ILevelData[] = [
         hint: 'Selects all <strong>B</strong> inside of <strong>A</strong>. <strong>B</strong> is called a descendant because it is inside of another element.',
         examples: [
             '<strong>p&nbsp;&nbsp;strong</strong> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>',
-            '<strong>#fancy&nbsp;&nbsp;span</strong> selects any <tag>span</tag> elements that are inside of the element with <strong>id="fancy"</strong>',
         ],
         boardMarkup: ['<plate />', '<plate>', '<apple />', '</plate>', '<apple />'],
         realMarkup: `<plate></plate><plate><apple></apple></plate><apple></apple>`,
@@ -84,7 +82,6 @@ export const levelsData: ILevelData[] = [
         hint: 'Thanks to Shatner technology, this selects all <strong>A</strong> and <strong>B</strong> elements. You can combine any selectors this way, and you can specify more than two.',
         examples: [
             '<strong>p, .fun</strong> selects all <tag>p</tag> elements as well as all elements with <strong>class="fun"</strong>',
-            '<strong>a, p, div</strong> selects all <tag>a</tag>, <tag>p</tag> and <tag>div</tag> elements',
         ],
         boardMarkup: ['<orange />', '<bento />', '<apple />', '<orange />'],
         realMarkup: `<orange></orange><bento></bento><apple></apple><orange></orange>`,

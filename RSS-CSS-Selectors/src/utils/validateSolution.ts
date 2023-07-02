@@ -1,7 +1,6 @@
 import { ResultType } from '../types/type';
 
 export const validateSolution = (solution: string, answer: string): ResultType => {
-    console.log(solution);
     const table = document.querySelector('.table');
     const result: ResultType = {
         checkResult: false,

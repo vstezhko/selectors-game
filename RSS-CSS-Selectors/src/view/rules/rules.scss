@@ -217,7 +217,7 @@
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1100px) {
   .header-rules {
     display: none;
   }
@@ -225,7 +225,7 @@
   .content-rules {
     display: block;
     min-width: 305px;
-    max-width: 400px;
+    max-width: 380px;
     width: min-content;
     flex-grow: 2;
   }

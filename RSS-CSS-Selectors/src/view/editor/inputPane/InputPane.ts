@@ -1,4 +1,4 @@
-import { Element, Input } from '../../../types/type';
+import { CompletedLevels, Element, Input } from '../../../types/type';
 import { validateSolution } from '../../../utils/validateSolution';
 import { ILevelData } from '../../../types/interface';
 import DataStorage from '../../../data-storage/DataStorage';
@@ -106,10 +106,22 @@ export class InputPane {
                             if (res.nodes) {
                                 if (index + 1 === res.nodes.length) {
                                     node.addEventListener('animationend', () => {
+                                        this.storage.setCompletedLevel(currentLevel, this.hint);
+                                        const completedLevels = this.storage.getValue(
+                                            StorageGameDataNames.COMPLETED
+                                        ) as CompletedLevels;
+
                                         if (currentLevel < this.levelsData.length) {
                                             this.storage.setCurrentLevel(currentLevel + 1);
+                                        } else {
+                                            if (completedLevels && completedLevels.size < 10) {
+                                                let level = 1;
+                                                while (completedLevels.get(level)) {
+                                                    level += 1;
+                                                }
+                                                this.storage.setCurrentLevel(level);
+                                            }
                                         }
-                                        this.storage.setCompletedLevel(currentLevel, this.hint);
                                         this.hint = StorageCompletedNames.SELF;
                                     });
                                 }
