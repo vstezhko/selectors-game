@@ -26,7 +26,7 @@ export class Table {
                         node.dataset.gameId = index.toString();
                     }
                 });
-            document.querySelectorAll(levelsData[currentLevel - 1].selector).forEach((node) => {
+            document.querySelectorAll(`.table ${levelsData[currentLevel - 1].selector}`).forEach((node) => {
                 node.classList.add('strobe');
             });
         }
