@@ -3,7 +3,6 @@ import { transformToGameMarkup } from '../../../utils/transformToMarkup';
 import DataStorage from '../../../data-storage/DataStorage';
 import { ILevelData } from '../../../types/interface';
 import { StorageGameDataNames } from '../../../types/enum';
-import { levelsData } from '../../../model/levelsData';
 import { getAllDescendants } from '../../../utils/getAllDescendants';
 
 export class MarkupPane {
@@ -17,7 +16,7 @@ export class MarkupPane {
 
     public draw(level: number): void {
         const markupPaneContainer: Element = document.querySelector<HTMLDivElement>('.markup-pane');
-        const innerMarkup = transformToGameMarkup(levelsData[level - 1].boardMarkup);
+        const innerMarkup = transformToGameMarkup(this.levelsData[level - 1].boardMarkup);
         const markupPaneLayout = `
             <div class='pane-header'>
                 <div class='pane-header__name'>HTML Editor</div>
