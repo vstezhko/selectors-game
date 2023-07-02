@@ -5,7 +5,7 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         static: {
-            directory: path.resolve(__dirname, '../RSS-CSS-Selectors/RSS-CSS-Selectors'),
+            directory: path.resolve(__dirname, '../rss-css-selectors/rss-css-selectors'),
         },
     },
 };

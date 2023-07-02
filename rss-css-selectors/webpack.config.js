@@ -51,7 +51,7 @@ const baseConfig = {
     },
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, 'RSS-CSS-Selectors/RSS-CSS-Selectors'),
+        path: path.resolve(__dirname, 'rss-css-selectors/rss-css-selectors'),
     },
     plugins: [
         new HtmlWebpackPlugin({
