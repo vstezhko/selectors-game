@@ -20,7 +20,7 @@ export class BurgerBtn {
         }
     }
 
-    static getInstance() {
+    static getInstance(): BurgerBtn {
         return this.instanceBurgerBtn;
     }
     public draw(containerElement: Element) {
@@ -29,7 +29,7 @@ export class BurgerBtn {
         }
     }
 
-    toggleBtnLevels() {
+    toggleBtnLevels(): void {
         if (this.BtnLayoutLevels && this.levelsContainer) {
             this.body && this.body.classList.toggle('body_withPopup');
             this.BtnLayoutLevels.classList.toggle('menu_active');

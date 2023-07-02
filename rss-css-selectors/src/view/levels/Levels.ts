@@ -31,7 +31,7 @@ export class Levels {
         this.levelsListContainer = null;
     }
 
-    private showWinMessage() {
+    private showWinMessage(): void {
         const winMessage = document.createElement('div');
         winMessage.textContent = 'You are win!!!';
         winMessage.classList.add('win');
@@ -40,7 +40,7 @@ export class Levels {
         burgerBtn.toggleBtnLevels();
     }
 
-    private generateLevelsListLayout(currentLevel: number) {
+    private generateLevelsListLayout(currentLevel: number): string {
         let generatedLevels = '';
 
         this.levelsData.forEach((level: ILevelData) => {
@@ -107,7 +107,7 @@ export class Levels {
             });
     }
 
-    renderLevels(currentLevel: number) {
+    renderLevels(currentLevel: number): void {
         if (this.levelsListContainer) {
             this.levelsListContainer.innerHTML = this.generateLevelsListLayout(currentLevel);
         }

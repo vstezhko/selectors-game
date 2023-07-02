@@ -42,7 +42,7 @@ export class HoverElementsWatcher {
         }
     }
 
-    createTagInfoLabel(el: HTMLElement) {
+    createTagInfoLabel(el: HTMLElement): void {
         const tagName = el.nodeName.toLowerCase();
         const className = Array.from(el.classList).filter((i) => i !== 'strobe')[0];
         const idName = el.id;
@@ -57,12 +57,12 @@ export class HoverElementsWatcher {
         tagLabel.style.left = `${el.getBoundingClientRect().left - 110}px`;
     }
 
-    removeTagInfoLabel() {
+    removeTagInfoLabel(): void {
         const tagLabel = document.querySelector('.tag-label');
         tagLabel && tagLabel.remove();
     }
 
-    hoverElements(id: string) {
+    hoverElements(id: string): void {
         const allElements = this.gatherElements();
         allElements &&
             allElements.forEach((el) => {
@@ -75,7 +75,7 @@ export class HoverElementsWatcher {
             });
     }
 
-    unHoverElements(id: string) {
+    unHoverElements(id: string): void {
         const allElements = this.gatherElements();
         allElements &&
             allElements.forEach((el) => {

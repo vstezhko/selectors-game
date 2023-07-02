@@ -20,11 +20,11 @@ export class InputPane {
         this.storage.subscribe(StorageGameDataNames.CURRENT_LEVEL, () => this.clearInput());
     }
 
-    clearInput() {
+    clearInput(): void {
         this.input && (this.input.value = '');
     }
 
-    setHintValue(level: number) {
+    setHintValue(level: number): void {
         this.hint = StorageCompletedNames.HINT;
         const hint = this.levelsData[level - 1].selector;
         this.btn && (this.btn.disabled = true);
@@ -81,7 +81,7 @@ export class InputPane {
         }
     }
 
-    handleSubmitSolution(input: Input, levelsData = this.levelsData) {
+    handleSubmitSolution(input: Input, levelsData = this.levelsData): void {
         const currentLevel = this.storage.getValue(StorageGameDataNames.CURRENT_LEVEL) as number;
         if (input) {
             const res = validateSolution(input.value, levelsData[currentLevel - 1].answer);
@@ -132,14 +132,14 @@ export class InputPane {
         }
     }
 
-    keyDownListener = (e: KeyboardEvent) => {
+    keyDownListener = (e: KeyboardEvent): void => {
         if (e.key === 'Enter') {
             this.btn && this.pressSubmitBtn(this.btn);
             this.input && this.handleSubmitSolution(this.input);
         }
     };
 
-    pressSubmitBtn = (btn: HTMLButtonElement) => {
+    pressSubmitBtn = (btn: HTMLButtonElement): void => {
         btn.classList.add('enterhit');
         btn.addEventListener('animationend', () => {
             btn.classList.remove('enterhit');

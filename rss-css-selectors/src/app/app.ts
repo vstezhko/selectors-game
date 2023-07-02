@@ -7,8 +7,7 @@ class App {
     }
 
     public start(): void {
-        console.log('start');
-        this.appView.drawHeader();
+        this.appView.drawComponents();
         this.appView.drawBurgerBtn();
     }
 }

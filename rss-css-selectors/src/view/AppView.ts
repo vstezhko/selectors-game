@@ -39,7 +39,7 @@ export class AppView {
         this.hoverElementsWatcher = new HoverElementsWatcher();
     }
 
-    public drawHeader(): void {
+    public drawComponents(): void {
         this.header.draw();
         this.footer.draw();
         this.levels.draw(this.startLevel);
