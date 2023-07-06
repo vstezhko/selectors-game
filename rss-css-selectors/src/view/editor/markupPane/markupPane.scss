@@ -1,0 +1,25 @@
+.markup-pane {
+  width: 100%;
+
+  .pane-window__content {
+    line-height: 150%;
+    cursor: default;
+
+    & div > div {
+      padding-left: 2rem;
+      transition: color 0.3s;
+
+      //&:hover {
+      //  color: rgba(255,255,255,.7);
+      //
+      //  * {
+      //    color: rgba(255,255,255,.7);
+      //  }
+      //}
+    }
+
+    & * {
+      color: rgba(255, 255, 255, .3);
+    }
+  }
+}

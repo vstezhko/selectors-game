@@ -1,0 +1,256 @@
+.table-area {
+  perspective: 300px;
+  text-align: center;
+  position: relative;
+  padding-top: 15px;
+  margin: 0 auto 3rem;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .table-container {
+    transform: rotateX(20deg);
+    min-height: 142px;
+    transform-origin: bottom;
+    z-index: 9;
+    position: relative;
+    margin: 10px auto 0 auto;
+    width: fit-content;
+
+    .table-surface {
+      box-shadow: 0 4rem 1rem rgba(0, 0, 0, .2);
+      background: #dd992d;
+      background: linear-gradient(#753921, #3b3185);
+      position: absolute;
+      height: 100%;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .table {
+      /* transform-style: preserve-3d; */
+      /* outline: solid 1px transparent; */
+      margin: 0 auto;
+      min-height: 1.4rem;
+      padding: 1rem 2rem 1.5rem 2rem;
+      display: inline-block;
+      z-index: 10;
+      position: relative;
+      //white-space: nowrap;
+    }
+
+
+    orange, apple, pickle, bento, plate {
+      transition: transform ease-out .2s;
+    }
+
+    bento,
+    plate {
+      box-shadow: 0 8px 0 rgba(0, 0, 0, .1);
+      display: inline-block;
+      width: 10rem;
+      height: 10rem;
+      margin: 0 1rem;
+      position: relative;
+    }
+
+    plate {
+      display: inline-block;
+      border-bottom: solid 5px #DDD;
+      background: white;
+      border-radius: 100px;
+      box-shadow: 0 8px 0 rgba(0, 0, 0, .1);
+      width: 100px;
+      height: 100px;
+      margin: 0 10px;
+      position: relative;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        left: calc(50% - 32px);
+        top: calc(50% - 32px);
+        height: 65px;
+        width: 65px;
+        border-radius: 60px;
+        border-top: solid 6px #CCC;
+        opacity: .4;
+        background: rgba(255, 255, 255, 1);
+      }
+
+      &#fancy:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: calc(50% - 47px);
+        top: calc(50% - 44px);
+        height: 6.8rem;
+        width: 7.4rem;
+        border-radius: 6rem;
+        border: solid 1rem #009ff2;
+        opacity: .4;
+      }
+
+      apple,
+      orange {
+        left: calc(50% - 30px);
+        margin: 0;
+        position: absolute;
+        z-index: 11;
+
+        &:last-child {
+          top: calc(50% - 35px);
+        }
+      }
+    }
+
+    bento {
+      height: 10rem;
+      background: brown;
+      position: relative;
+      border: solid #711c12;
+      border-width: 2rem 0.2rem;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: calc(100%);
+        top: 0;
+        left: 0;
+        border: solid rgba(0, 0, 0, .1);
+        border-width: 1rem 0 0 0;
+      }
+
+      &.blue {
+        background: #0074D9;
+      }
+
+      apple,
+      orange {
+        left: calc(50% - 30px);
+        margin: 0;
+        position: absolute;
+
+        &:last-child {
+          top: calc(50% - 35px);
+        }
+      }
+    }
+
+    orange, apple, pickle {
+      box-shadow: 0 0.5rem 0 rgba(0, 0, 0, .2);
+      display: inline-block;
+      height: 6rem;
+    }
+
+    orange, apple {
+      border-radius: 10rem;
+      border-style: solid;
+      border-width: 0.2rem 0.4rem 1.5rem 0.4rem;
+      height: 6rem;
+      width: 6rem;
+      position: relative;
+      margin: 2rem 1rem;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        background: rgba(255, 255, 255, .3);
+        height: 30%;
+        width: 30%;
+        top: 0;
+        left: calc(50% - 15%);
+        border-radius: 100px;
+      }
+    }
+
+    apple {
+      background: #e41919;
+      border-color: #ab1212;
+    }
+
+    orange {
+      background: orange;
+      border-color: #bd6e07;
+    }
+  }
+
+  .strobe {
+    transform-origin: bottom;
+    animation: strobeStart .5s ease-out, strobe 1s infinite;
+    //animation-delay: 0s, .5s;
+  }
+
+  @keyframes strobeStart {
+    0% {
+      transform: skew(0deg, 0deg) scaleY(1);
+      animation-timing-function: ease-in;
+    }
+    40% {
+      transform: skew(0deg, 0deg) scaleY(.9);
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform: skew(4deg, 0deg) scaleX(1);
+    }
+  }
+
+  @keyframes strobe {
+    0% {
+      transform: skew(4deg, 0deg) scaleX(1);
+    }
+    10% {
+      transform: skew(1deg, 0deg) scaleY(.9);
+    }
+    50% {
+      transform: skew(-4deg, 0deg) scaleX(1);
+    }
+    60% {
+      transform: skew(-1deg, 0deg) scaleY(.9);
+    }
+    100% {
+      transform: skew(4deg, 0deg) scaleX(1);
+    }
+  }
+}
+
+.clean {
+  animation: cleanme .4s 1;
+  transform-origin: center center;
+}
+
+@keyframes cleanme {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-200px) scale(2);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .table-area {
+    margin: 0 1rem;
+    flex-grow: 2;
+    width: 44rem;
+  }
+
+  .table-container {
+    width: 80%;
+
+    & > * {
+      width: 100%;
+    }
+  }
+}
+
+

@@ -1,0 +1,39 @@
+.level-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+
+  .table__doThis {
+    color: rgb(222 228 133 / 74%);;
+    font-size: 4.5rem;
+    margin: 0;
+    font-weight: 400;
+    text-align: center;
+    padding: 1rem 3rem;
+  }
+
+  .table__note {
+    height: 35px;
+  }
+
+  .table__toggle {
+    background: rgba(0,0,0,.2);
+    color: rgba(255,255,255,.3);
+    padding: 8px 15px 10px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      color: rgba(255,255,255,.4);
+    }
+
+    &_hidden {
+      display: none;
+    }
+  }
+}

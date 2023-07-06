@@ -1,0 +1,27 @@
+.footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo-img,
+  .github-img {
+    height: 40px;
+    display: flex;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .logo-img {
+    align-items: center;
+    gap: 1rem;
+  }
+
+
+
+
+
+
+}

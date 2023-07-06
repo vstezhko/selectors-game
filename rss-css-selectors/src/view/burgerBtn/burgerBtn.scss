@@ -1,0 +1,50 @@
+/// Burger
+
+%menu-line {
+  width: 2.3rem;
+  height: 2px;
+  right: 0;
+  background: #777777;
+  content: '';
+  position: absolute;
+}
+
+.menu {
+  position: relative;
+  width: fit-content;
+  padding-right: 40px;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+
+
+  .menu-line {
+    @extend %menu-line;
+    top: calc(50% - 1px);
+    width: 2.3rem;
+    transition: all ease-in 0.3s;
+
+    &:before {
+      @extend %menu-line;
+      top: -10px;
+    }
+
+    &:after {
+      @extend %menu-line;
+      top: 10px;
+    }
+  }
+
+  &_active {
+    .menu-line {
+
+      transform: rotate(90deg);
+      background: #FFF;
+
+      &:after, &:before,{
+        background: #FFF;
+        transform-origin: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+.levels {
+
+  .background {
+    display: none;
+    background: linear-gradient(to right, #010228, #363b00);
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .popup {
+    background: #262427;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0;
+    position: absolute;
+    height: 100vh;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 30rem;
+    overflow: auto;
+    transition: all 0.3s;
+    z-index: 9;
+
+    h2 {
+      font-size: 2.2rem;
+      color: white;
+      opacity: .4;
+      font-weight: normal;
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+  }
+
+  &_opened {
+    .background {
+      display: block;
+    }
+
+    .popup {
+      right: 0;
+    }
+  }
+
+
+}
+
+.levels__list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.levels__level {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  cursor: pointer;
+  padding: 1rem 1.2rem 1rem 2.2rem;
+  color: #777;
+
+  &:hover {
+    background: rgba(255, 255, 255, .05);
+  }
+
+  // checkmark
+
+  .checkmark {
+    position: relative;
+    display: inline-block;
+    margin-right: 1.4rem;
+    width: 0.8rem;
+    height: 13px;
+    border: solid white;
+    border-width: 0 0.3rem 0.3rem 0;
+    opacity: .2;
+    top: -1px;
+    transform: rotate(40deg);
+
+    &_completed-self {
+      opacity: .55;
+      border: solid #4cbb4a;
+      border-width: 0 0.3rem 0.3rem 0;
+    }
+
+    &_completed-hint {
+      opacity: .55;
+      border: solid #efff40;
+      border-width: 0 0.3rem 0.3rem 0;
+    }
+  }
+
+
+  &_current {
+    font-weight: bold;
+    color: #AAA;
+    background: rgb(196 219 5 / 14%);;
+  }
+}
+
+.reset-progress {
+  display: block;
+  text-align: center;
+  border: solid 0.2rem rgba(255, 255, 255, .2);
+  box-sizing: border-box;
+  width: calc(100% - 40px);
+  color: rgba(255, 255, 255, .4);
+  padding: 1rem 0 1rem 0;
+  margin: 0 auto;
+  font-size: 1.6rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, .05);
+  }
+}
+
+.win {
+  margin: 1rem;
+  font-size: 2rem;
+  color: #4cbb4a;
+}
+
+
+
+

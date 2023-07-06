@@ -1,0 +1,35 @@
+.table-area .table-container .table {
+
+  plate,
+  bento,
+  apple,
+  orange {
+
+    &[data-hovered="true"] {
+      box-shadow: 0 0 15px 10px #82a4f3;
+    }
+
+  }
+}
+
+.table-div {
+  *[data-hovered="true"] {
+    color: rgba(154, 185, 252, 0.78);
+
+    * {
+      color: rgba(154, 185, 252, 0.78);
+    }
+  }
+}
+
+.tag-label {
+  content: 'dfghn';
+  padding: 1rem;
+  background: white;
+  color: #4cbb4a;
+  position: absolute;
+  top: -50px;
+  display: inline;
+  width: max-content;
+  max-width: 150px;
+}
