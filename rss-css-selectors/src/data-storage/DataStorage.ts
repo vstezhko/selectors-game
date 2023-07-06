@@ -48,7 +48,6 @@ export default class DataStorage {
         this.gameData[StorageGameDataNames.COMPLETED] = completedMap;
         if (this.gameData[StorageGameDataNames.COMPLETED].size === levelsData.length) {
             this.gameData[StorageGameDataNames.WIN] = true;
-            // this.notify(StorageGameDataNames.COMPLETED, this.gameData[StorageGameDataNames.COMPLETED]);
             this.notify(StorageGameDataNames.WIN, this.gameData[StorageGameDataNames.COMPLETED]);
             this.saveGameData();
             return;
